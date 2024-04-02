@@ -119,7 +119,7 @@ function getTemperatures(includeMonitors) {
 function displayResponse(command, responseData) {
     const responseElement = document.getElementById('response');
     // Construct the string representation of the command and response
-    const message = `Command sent: ${command}\nResponse: ${JSON.stringify(responseData)}`;
+    const message = `Command sent: ${command} ----- Response: ${JSON.stringify(responseData)}`;
     // Append the message to the response element
     responseElement.innerText += message + '\n';
     responseElement.scrollTop = responseElement.scrollHeight;
