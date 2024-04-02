@@ -83,7 +83,8 @@ function sendGCodeCommand(gCodeCommand) {
         })
         .then(responseBody => {
 
-            displayResponse(gCodeCommand, responseBody);
+            const responseElement = JSON.parse(responseBody);
+            displayResponse(gCodeCommand, responseElement.result);
         })
         .catch(error => {
             console.error('Error:', error);
