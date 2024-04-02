@@ -1,3 +1,6 @@
+
+const FLUIDD_SERVER_URL = "http://192.168.0.71";
+
 function homePrinter() {
     sendGCodeCommand('G28');
 }
@@ -36,7 +39,6 @@ function sendCommand(event) {
 }
 
 function getTemperatures(includeMonitors) {
-    const FLUIDD_SERVER_URL = "http://192.168.0.71";
     const TEMPERATURE_STORE_ENDPOINT = "/server/temperature_store";
 
     const url = FLUIDD_SERVER_URL + TEMPERATURE_STORE_ENDPOINT;
@@ -70,7 +72,7 @@ function getTemperatures(includeMonitors) {
 
 
 function sendGCodeCommand(gCodeCommand) {
-    const url = `http://192.168.0.71:7125/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
+    const url = FLUIDD_SERVER_URL + `/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
 
     fetch(url)
         .then(response => {
@@ -128,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function uploadFile(file) {
-    const url = 'http://192.168.0.71:7125/server/files/upload';
+    const url = FLUIDD_SERVER_URL + '/server/files/upload';
     const formData = new FormData();
     formData.append('file', file);
     formData.append('root', 'gcodes'); // Specify the root location for uploading
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function printFile(fileName) {
-    const url = 'http://192.168.0.71:7125/printer/print/start';
+    const url = FLUIDD_SERVER_URL + '/printer/print/start';
     const data = {
         filename: fileName
     };
@@ -200,7 +202,7 @@ function printFile(fileName) {
 }
 
 function cancelPrint() {
-    const url = 'http://192.168.0.71:7125/printer/print/cancel';
+    const url = FLUIDD_SERVER_URL + '/printer/print/cancel';
 
     fetch(url, {
         method: 'POST',
@@ -222,7 +224,7 @@ function cancelPrint() {
 
 // Function to fetch printer information
 function fetchPrinterInfo() {
-    const url = 'http://192.168.0.71:7125/printer/info';
+    const url = FLUIDD_SERVER_URL + '/printer/info';
 
     fetch(url)
         .then(response => {
