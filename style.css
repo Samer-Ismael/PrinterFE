@@ -26,7 +26,7 @@ h1 {
     justify-content: center;
     margin-bottom: 20px;
 }
-/* Modify button styles */
+
 button {
     padding: 12px 24px;
     margin: 0 10px;
@@ -37,51 +37,43 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    width: 180px; /* Set a fixed width for all buttons */
+    width: 180px;
 }
 
-/* Style for pressed state */
 button:active {
-    background-color: #4d5158; /* Apply different background color when button is clicked */
+    background-color: #4d5158;
 }
 
 button:hover {
-    background-color: #d29258; /* Apply different background color when mouse is over the button */
+    background-color: #d29258;
 }
 
-/* Style for active state */
 button.active {
-    background-color: #4d5158; /* Apply different background color when button is active */
+    background-color: #4d5158;
 }
-
 
 #response {
     margin-top: 20px;
-    padding: 20px; /* Increase padding for more space inside the box */
+    padding: 20px;
     background-color: #343a42;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 94.5%; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
-    overflow: auto; /* Add scrollbar if content exceeds the height */
+    width: 94.5%;
+    height: 200px;
+    overflow: auto;
 }
-
-/* ------------------------------------------------------------------------------------------------------------ */
 
 .temps {
     text-align: center;
     margin-top: 20px;
 }
 
-
 .separator {
     width: 100%;
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.2); /* Adjust color and opacity as needed */
-    margin: 20px 0; /* Adjust margin as needed */
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
 }
-
-/* ------------------------------------------------------------------------------------------------------------ */
 
 #commandForm {
     display: flex;
@@ -99,8 +91,6 @@ button.active {
 #commandForm button[type="submit"] {
     margin-left: 10px;
 }
-
-/* ------------------------------------------------------------------------------------------------------------ */
 
 .temp-table {
     display: flex;
@@ -133,13 +123,11 @@ button.active {
 
 .button-container {
     text-align: right;
-    margin-top: 10px; /
+    margin-top: 10px;
 }
 
-
-/* ------------------------------------------------------------------------------------------------------------ */
 .files h2 {
-    text-align: center; /* Center-align the text */
+    text-align: center;
 }
 
 .file-item {
@@ -148,8 +136,6 @@ button.active {
     font-family: Arial, sans-serif;
     margin-bottom: 5px;
 }
-
-/* ------------------------------------------------------------------------------------------------------------ */
 
 .camera {
     margin-top: 20px;
@@ -163,79 +149,66 @@ button.active {
     display: block;
     margin: 0 auto;
 }
-/* ------------------------------------------------------------------------------------------------------------ */
 
 .files-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .files {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .file-input-wrapper {
-    flex-grow: 4;
-    margin-right: 100px;
-    padding: 20px;
-    background-color: #4b2b0c;
-    color: #fff;
-    border-radius: 8px;
-    display: flex;
-
+    margin-right: 10px;
 }
 
-.upload-button {
-    width: fit-content;
+.files-container .files button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    width: 120px;
 }
-.clear-button {
-    margin-left: 10px;
-    width: fit-content;
-}
+
+
 /* ------------------------------------------------------------------------------------------------------------ */
-/* responsive design */
-
-@media screen and (max-width: 412px) {
+/* Responsive styles */
+@media screen and (max-width: 650px) {
     .container {
-        max-width: 100%;
-        margin: 20px auto;
-        padding: 10px;
+        max-width: 100%; /* Adjust container width for smaller screens */
+        margin: 20px auto; /* Center the container */
+        padding: 10px; /* Adjust padding for smaller screens */
     }
     h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
+        font-size: 24px; /* Reduce heading font size for smaller screens */
+        margin-bottom: 20px; /* Adjust heading margin for smaller screens */
     }
-    .buttons {
-        text-align: center;
-        margin-bottom: 2px;
+    .temps {
+        margin-top: 10px; /* Adjust margin top for smaller screens */
     }
-    .button {
-        padding: 8px 16px;
-        font-size: 14px;
-        margin: 0 5px;
+    .temp-row {
+        flex-direction: column; /* Stack temperature rows vertically for smaller screens */
     }
-    #response {
-        width: 94.5%;
-        height: 100px;
+    .temp-column {
+        flex: 1; /* Expand temperature columns to full width */
+        margin-bottom: 10px; /* Add space between temperature columns for smaller screens */
     }
-    .camera {
-        margin-top: 10px;
-    }
-    .camera iframe {
-        width: 100%;
-    }
-    .files-container {
-        margin-top: 10px;
+    .new-temp-input {
+        width: 100%; /* Make temperature input fields full width for smaller screens */
     }
     .files {
-        flex-direction: row;
+        flex-direction: column; /* Stack file buttons vertically for smaller screens */
     }
     .file-input-wrapper {
-        margin-right: 0;
-        margin-bottom: 10px; /
+        margin-right: 0; /* Remove margin for file input wrapper for smaller screens */
+        margin-bottom: 10px; /* Add space between the input and buttons for smaller screens */
     }
 }
 
