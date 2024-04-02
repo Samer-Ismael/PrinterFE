@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printer Controller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Printer Controller</h1>
+    <div id="response"></div>
+    <div class="buttons">
+        <button onclick="homePrinter()">Home Printer</button>
+        <button onclick="emergencyStop()">Emergency Stop</button>
+        <button onclick="preheatPLA()">Preheat PLA</button>
+        <button onclick="preheatABS()">Preheat ABS</button>
+    </div>
+    <form id="commandForm" onsubmit="sendCommand(event)">
+        <label for="command">Enter Command:</label>
+        <input type="text" id="command" name="command" required>
+        <button type="submit">Send Command</button>
+    </form>
+    <div class="temps">
+        <h2>Temperatures</h2>
+        <div class="temp-row">
+            <div class="temp-column">
+                <span class="temp-label">Extruder:</span>
+                <span id="extruderTemp" class="temp-value">0</span>°C <!-- Default value 0 -->
+                <input type="number" id="newExtruderTemp" class="new-temp-input" placeholder="Set New Temp">
+            </div>
+            <div class="temp-column">
+                <span class="temp-label">Heater Bed:</span>
+                <span id="heaterBedTemp" class="temp-value">0</span>°C <!-- Default value 0 -->
+                <input type="number" id="newHeaterBedTemp" class="new-temp-input" placeholder="Set New Temp">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
