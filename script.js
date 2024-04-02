@@ -38,6 +38,51 @@ function sendCommand(event) {
         sendGCodeCommand(command);
     }
 }
+function sendGCodeCommand(gCodeCommand) {
+    const url = FLUIDD_SERVER_URL + `/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
+
+    if (gCodeCommand.toLowerCase() === 'clear') {
+        document.getElementById('response').innerText = '';
+        document.getElementById('command').value = '';
+        return;
+
+    } else {
+
+        displayResponse('Working...', "........")
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                return response.text();
+            })
+            .then(responseBody => {
+
+                const responseElement = JSON.parse(responseBody);
+                displayResponse(gCodeCommand, responseElement.result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+}
+document.getElementById('command').addEventListener('keydown', function(event) {
+    // Check if the key pressed is Enter (key code 13)
+    if (event.keyCode === 13) {
+        // Prevent the default behavior of the Enter key (form submission)
+        event.preventDefault();
+        // Get the value of the input element
+        const gCodeCommand = this.value.trim();
+        // Check if the command is not empty
+        if (gCodeCommand) {
+            // Call the sendGCodeCommand function with the entered command
+            sendGCodeCommand(gCodeCommand);
+            // Clear the input field
+            this.value = '';
+        }
+    }
+});
 
 // -------------------------------------------------------------------------------------------------------------------
 function getTemperatures(includeMonitors) {
@@ -69,45 +114,6 @@ function getTemperatures(includeMonitors) {
         })
         .catch(error => console.error('Error:', error));
 }
-
-// -------------------------------------------------------------------------------------------------------------------
-function sendGCodeCommand(gCodeCommand) {
-    const url = FLUIDD_SERVER_URL + `/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(responseBody => {
-
-            const responseElement = JSON.parse(responseBody);
-            displayResponse(gCodeCommand, responseElement.result);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-}
-
-document.getElementById('command').addEventListener('keydown', function(event) {
-    // Check if the key pressed is Enter (key code 13)
-    if (event.keyCode === 13) {
-        // Prevent the default behavior of the Enter key (form submission)
-        event.preventDefault();
-        // Get the value of the input element
-        const gCodeCommand = this.value.trim();
-        // Check if the command is not empty
-        if (gCodeCommand) {
-            // Call the sendGCodeCommand function with the entered command
-            sendGCodeCommand(gCodeCommand);
-            // Clear the input field
-            this.value = '';
-        }
-    }
-});
 
 // -------------------------------------------------------------------------------------------------------------------
 function displayResponse(command, responseData) {
@@ -248,9 +254,8 @@ function fetchPrinterInfo() {
             console.error('Error fetching printer information:', error);
         });
 }
-// Call fetchPrinterInfo function to fetch and update printer information
-fetchPrinterInfo();
 
+fetchPrinterInfo();
 // Update printer status
 function updatePrinterStatus(status) {
     const printerStatusElement = document.getElementById('printerStatus');
@@ -293,10 +298,8 @@ function setNewHeaterBedTemp() {
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-// Get all buttons
+// Get all buttons on the page for the active state
 const buttons = document.querySelectorAll('button');
-
-// Add event listener to each button
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         // Add a class to indicate the button is active
