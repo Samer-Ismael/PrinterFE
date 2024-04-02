@@ -244,3 +244,113 @@ button.active {
     width: 100%;
     height: auto;
 }
+
+
+
+
+.controller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+}
+
+.controller h2 {
+    text-align: center; /* Center the text horizontally */
+    margin: 0 auto; /* Center the h2 horizontally */
+}
+
+.controller-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controller-buttons > div {
+    display: flex;
+}
+
+.arrow-button {
+    padding: 10px 10px;
+    font-size: 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4b2b0c;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    width: 70px;
+}
+
+.arrow-button:hover {
+    background-color: #d29258;
+}
+
+.home-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4b2b0c;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.home-button:hover {
+    background-color: #d29258;
+}
+
+.additional-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.additional-buttons > button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4b2b0c;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    width: 70px;
+}
+
+.additional-buttons > button:hover {
+    background-color: #d29258;
+}
+
+.additional-buttons-cal > .home-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4b2b0c;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    width: 230px;
+    height: 40px;
+}
+
+.additional-buttons-cal > .home-button:hover {
+    background-color: #d29258;
+}
