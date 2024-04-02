@@ -35,14 +35,17 @@
                 <span class="temp-label">Extruder:</span>
                 <span id="extruderTemp" class="temp-value">0</span>°C <!-- Default value 0 -->
                 <input type="number" id="newExtruderTemp" class="new-temp-input" placeholder="Set New Temp">
+                <button onclick="setNewExtruderTemp()">Set</button>
             </div>
             <div class="temp-column">
                 <span class="temp-label">Heater Bed:</span>
                 <span id="heaterBedTemp" class="temp-value">0</span>°C <!-- Default value 0 -->
                 <input type="number" id="newHeaterBedTemp" class="new-temp-input" placeholder="Set New Temp">
+                <button onclick="setNewHeaterBedTemp()">Set</button>
             </div>
         </div>
     </div>
+
 
     <div class="files-container">
         <h2>Upload File</h2>

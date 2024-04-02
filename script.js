@@ -80,8 +80,8 @@ function sendGCodeCommand(gCodeCommand) {
             return response.text();
         })
         .then(responseBody => {
-            const responseData = JSON.parse(responseBody);
-            displayResponse(gCodeCommand, responseData.result);
+
+            displayResponse(gCodeCommand, responseBody);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -115,14 +115,6 @@ function displayResponse(command, responseData) {
     responseElement.innerText += message + '\n';
     responseElement.scrollTop = responseElement.scrollHeight;
 
-}
-
-
-function displayTemperatures(data) {
-    var temperatureResponse = '';
-    temperatureResponse += 'Bed Temperature: ' + data.bed + '°C<br>';
-    temperatureResponse += 'Nozzle Temperature: ' + data.nozzle + '°C';
-    document.getElementById('temperatureResponse').innerHTML = temperatureResponse;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -266,4 +258,45 @@ function updatePrinterStatus(status) {
 function updatePrinterName(name) {
     const printerNameElement = document.getElementById('printerName');
     printerNameElement.textContent = name;
+}
+
+// Function to format the GCode help response
+function formatGCodeHelpResponse(response) {
+    const gcodeHelp = response.result;
+    let formattedResponse = 'GCode Help:\n';
+
+    for (const [command, description] of Object.entries(gcodeHelp)) {
+        formattedResponse += `Command: ${command}\nDescription: ${description}\n\n`;
+    }
+
+    return formattedResponse;
+}
+
+function setNewExtruderTemp() {
+    const newTempInput = document.getElementById('newExtruderTemp');
+    const newTempValue = newTempInput.value;
+
+    sendGCodeCommand('M104 S' + newTempValue)
+    displayResponse('New extruder temperature set to:', newTempValue);
+
+    // Optionally, you can update the displayed temperature value
+    document.getElementById('extruderTemp').textContent = newTempValue;
+
+    // Clear the input field after setting the temperature
+    newTempInput.value = '';
+}
+
+function setNewHeaterBedTemp() {
+    const newTempInput = document.getElementById('newHeaterBedTemp');
+    const newTempValue = newTempInput.value;
+
+    sendGCodeCommand('M140 S' + newTempValue)
+
+    displayResponse('New heater bed temperature set to:', newTempValue);
+
+    // Optionally, you can update the displayed temperature value
+    document.getElementById('heaterBedTemp').textContent = newTempValue;
+
+    // Clear the input field after setting the temperature
+    newTempInput.value = '';
 }
