@@ -26,7 +26,7 @@ h1 {
     justify-content: center;
     margin-bottom: 20px;
 }
-
+/* Modify button styles */
 button {
     padding: 12px 24px;
     margin: 0 10px;
@@ -37,11 +37,23 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    width: 150px; /* Set a fixed width for all buttons */
+}
+
+/* Style for pressed state */
+button:active {
+    background-color: #4d5158; /* Apply different background color when button is clicked */
 }
 
 button:hover {
-    background-color: #d29258;
+    background-color: #d29258; /* Apply different background color when mouse is over the button */
 }
+
+/* Style for active state */
+button.active {
+    background-color: #4d5158; /* Apply different background color when button is active */
+}
+
 
 #response {
     margin-top: 20px;

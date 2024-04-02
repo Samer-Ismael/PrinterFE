@@ -290,3 +290,19 @@ function setNewHeaterBedTemp() {
     newTempInput.value = '';
 }
 //-------------------------------------------------------------------------------------------------------------------
+
+// Get all buttons
+const buttons = document.querySelectorAll('button');
+
+// Add event listener to each button
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Add a class to indicate the button is active
+        button.classList.add('active');
+
+        // Remove the active class after a short delay
+        setTimeout(() => {
+            button.classList.remove('active');
+        }, 100); // Adjust the delay as needed
+    });
+});
