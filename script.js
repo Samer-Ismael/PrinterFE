@@ -24,6 +24,7 @@ function coolDown() {
     sendGCodeCommand('M104 S0');
 }
 
+// -------------------------------------------------------------------------------------------------------------------
 function sendCommand(event) {
     event.preventDefault();
     var command = document.getElementById('command').value;
@@ -38,6 +39,7 @@ function sendCommand(event) {
     }
 }
 
+// -------------------------------------------------------------------------------------------------------------------
 function getTemperatures(includeMonitors) {
     const TEMPERATURE_STORE_ENDPOINT = "/server/temperature_store";
 
@@ -68,9 +70,7 @@ function getTemperatures(includeMonitors) {
         .catch(error => console.error('Error:', error));
 }
 
-
-
-
+// -------------------------------------------------------------------------------------------------------------------
 function sendGCodeCommand(gCodeCommand) {
     const url = FLUIDD_SERVER_URL + `/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
 
@@ -108,7 +108,7 @@ document.getElementById('command').addEventListener('keydown', function(event) {
     }
 });
 
-
+// -------------------------------------------------------------------------------------------------------------------
 function displayResponse(command, responseData) {
     const responseElement = document.getElementById('response');
     // Construct the string representation of the command and response
@@ -126,9 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(getTemperatures, 500);
 });
 
-
-
-
+// -------------------------------------------------------------------------------------------------------------------
 function uploadFile(file) {
     const url = FLUIDD_SERVER_URL + '/server/files/upload';
     const formData = new FormData();
@@ -150,7 +148,6 @@ function uploadFile(file) {
             alert('Error uploading file. Please try again.');
         });
 }
-
 document.addEventListener('DOMContentLoaded', function() {
     const uploadButton = document.querySelector('.upload-button');
     const printButton = document.querySelector('.print-button');
@@ -176,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fileInput.value = '';
     });
 });
-
+// -------------------------------------------------------------------------------------------------------------------
 function printFile(fileName) {
     const url = FLUIDD_SERVER_URL + '/printer/print/start';
     const data = {
@@ -201,6 +198,7 @@ function printFile(fileName) {
         });
 }
 
+//-------------------------------------------------------------------------------------------------------------------
 function cancelPrint() {
     const url = FLUIDD_SERVER_URL + '/printer/print/cancel';
 
@@ -222,6 +220,7 @@ function cancelPrint() {
         });
 }
 
+//-------------------------------------------------------------------------------------------------------------------
 // Function to fetch printer information
 function fetchPrinterInfo() {
     const url = FLUIDD_SERVER_URL + '/printer/info';
@@ -246,7 +245,6 @@ function fetchPrinterInfo() {
             console.error('Error fetching printer information:', error);
         });
 }
-
 // Call fetchPrinterInfo function to fetch and update printer information
 fetchPrinterInfo();
 
@@ -255,25 +253,13 @@ function updatePrinterStatus(status) {
     const printerStatusElement = document.getElementById('printerStatus');
     printerStatusElement.textContent = status;
 }
-
 // Update printer name
 function updatePrinterName(name) {
     const printerNameElement = document.getElementById('printerName');
     printerNameElement.textContent = name;
 }
 
-// Function to format the GCode help response
-function formatGCodeHelpResponse(response) {
-    const gcodeHelp = response.result;
-    let formattedResponse = 'GCode Help:\n';
-
-    for (const [command, description] of Object.entries(gcodeHelp)) {
-        formattedResponse += `Command: ${command}\nDescription: ${description}\n\n`;
-    }
-
-    return formattedResponse;
-}
-
+//-------------------------------------------------------------------------------------------------------------------
 function setNewExtruderTemp() {
     const newTempInput = document.getElementById('newExtruderTemp');
     const newTempValue = newTempInput.value;
@@ -302,3 +288,4 @@ function setNewHeaterBedTemp() {
     // Clear the input field after setting the temperature
     newTempInput.value = '';
 }
+//-------------------------------------------------------------------------------------------------------------------
