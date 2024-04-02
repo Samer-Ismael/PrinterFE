@@ -134,6 +134,8 @@ function uploadFile(file) {
     formData.append('file', file);
     formData.append('root', 'gcodes'); // Specify the root location for uploading
 
+    displayResponse('Uploading file', file.name)
+
     fetch(url, {
         method: 'POST',
         body: formData
