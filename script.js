@@ -178,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     clearButton.addEventListener('click', function() {
-        // Clear the selected file
         fileInput.value = '';
     });
 });

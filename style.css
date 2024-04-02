@@ -149,6 +149,7 @@ button.active {
     margin-bottom: 5px;
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
 
 .camera {
     margin-top: 20px;
@@ -162,12 +163,13 @@ button.active {
     display: block;
     margin: 0 auto;
 }
+/* ------------------------------------------------------------------------------------------------------------ */
 
 .files-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .files {
@@ -176,14 +178,69 @@ button.active {
 }
 
 .file-input-wrapper {
-    flex-grow: 1; /* Takes up remaining space */
-    margin-right: 10px; /* Add some space between the input and button */
+    flex-grow: 4;
+    margin-right: 100px;
+    padding: 20px;
+    background-color: #4b2b0c;
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+
 }
 
 .upload-button {
-    width: fit-content; /* Adjust width based on content */
+    width: fit-content;
 }
 .clear-button {
-    margin-left: 10px; /* Add space between the buttons */
-    width: fit-content; /* Adjust width based on content */
+    margin-left: 10px;
+    width: fit-content;
+}
+/* ------------------------------------------------------------------------------------------------------------ */
+/* responsive design */
+
+@media screen and (max-width: 412px) {
+    .container {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .buttons {
+        text-align: center;
+        margin-bottom: 2px;
+    }
+    .button {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin: 0 5px;
+    }
+    #response {
+        width: 94.5%;
+        height: 100px;
+    }
+    .camera {
+        margin-top: 10px;
+    }
+    .camera iframe {
+        width: 100%;
+    }
+    .files-container {
+        margin-top: 10px;
+    }
+    .files {
+        flex-direction: row;
+    }
+    .file-input-wrapper {
+        margin-right: 0;
+        margin-bottom: 10px; /
+    }
+}
+
+/* Common styles */
+.image {
+    width: 100%;
+    height: auto;
 }
