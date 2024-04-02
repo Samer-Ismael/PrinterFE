@@ -132,77 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(getTemperatures, 500);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Fetch temperatures when the page loads
-    getTemperatures();
-    // Update temperatures every 0.5 seconds
-    setInterval(getTemperatures, 500);
 
-    // Fetch and display files when the page loads
-    getFiles();
-});
 
-function getFiles(rootFolder) {
-    const url = `http://192.168.0.71:7125/server/files/list?root=${rootFolder}`;
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Files:', data); // Log the response data
-            displayFiles(data);
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function displayFiles(files) {
-    const fileListElement = document.getElementById('fileList');
-    fileListElement.innerHTML = ''; // Clear previous list
-
-    files.forEach(file => {
-        const listItem = document.createElement('li');
-        listItem.textContent = file.path;
-
-        // Add click event listener to list item
-        listItem.addEventListener('click', function() {
-            // Show the print button
-            document.getElementById('printFileButton').style.display = 'inline';
-            // Store the selected file name as a data attribute
-            document.getElementById('printFileButton').setAttribute('data-file-path', file.path);
-        });
-
-        fileListElement.appendChild(listItem);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const rootFolder = {
-        name: "gcodes",
-        path: "/home/samer/printer_data/gcodes",
-        permissions: "rw"
-    };
-    console.log('Fetching files from:', rootFolder.path); // Log the root folder path
-    getFiles(rootFolder);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const uploadForm = document.getElementById('uploadForm');
-    uploadForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const fileInput = document.getElementById('fileInput');
-        const file = fileInput.files[0];
-        if (!file) {
-            alert('Please select a file.');
-            return;
-        }
-
-        uploadFile(file);
-    });
-});
 
 function uploadFile(file) {
     const url = 'http://192.168.0.71:7125/server/files/upload';
@@ -228,12 +159,22 @@ function uploadFile(file) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const uploadButton = document.querySelector('.upload-button');
+    const printButton = document.querySelector('.print-button');
+    const cancelButton = document.querySelector('.cancel-button');
     const clearButton = document.querySelector('.clear-button');
     const fileInput = document.getElementById('fileInput');
 
     uploadButton.addEventListener('click', function() {
-        // Your upload logic here
-        // This event listener handles the upload button click
+        uploadFile(fileInput.files[0]);
+    });
+
+    printButton.addEventListener('click', function() {
+        const fileName = fileInput.files[0].name;
+        printFile(fileName);
+    });
+
+    cancelButton.addEventListener('click', function() {
+        cancelPrint();
     });
 
     clearButton.addEventListener('click', function() {
@@ -241,3 +182,50 @@ document.addEventListener('DOMContentLoaded', function() {
         fileInput.value = '';
     });
 });
+
+function printFile(fileName) {
+    const url = 'http://192.168.0.71:7125/printer/print/start';
+    const data = {
+        filename: fileName
+    };
+
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Print response:', data);
+            displayResponse('Print Status', data);
+        })
+        .catch(error => {
+            console.error('Error printing file:', error);
+            alert('Error printing file. Please try again.');
+        });
+}
+
+function cancelPrint() {
+    const url = 'http://192.168.0.71:7125/printer/print/cancel';
+
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Cancel print response:', data);
+            displayResponse('Cancel Print Status', data);
+        })
+        .catch(error => {
+            console.error('Error canceling print:', error);
+            alert('Error canceling print. Please try again.');
+        });
+}
+
+
