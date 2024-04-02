@@ -228,4 +228,42 @@ function cancelPrint() {
         });
 }
 
+// Function to fetch printer information
+function fetchPrinterInfo() {
+    const url = 'http://192.168.0.71:7125/printer/info';
 
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Extract relevant information from the response
+            const printerStatus = data.result.state_message;
+            const printerName = data.result.hostname;
+
+            // Update printer status and name
+            updatePrinterStatus(printerStatus);
+            updatePrinterName(printerName);
+        })
+        .catch(error => {
+            console.error('Error fetching printer information:', error);
+        });
+}
+
+// Call fetchPrinterInfo function to fetch and update printer information
+fetchPrinterInfo();
+
+// Update printer status
+function updatePrinterStatus(status) {
+    const printerStatusElement = document.getElementById('printerStatus');
+    printerStatusElement.textContent = status;
+}
+
+// Update printer name
+function updatePrinterName(name) {
+    const printerNameElement = document.getElementById('printerName');
+    printerNameElement.textContent = name;
+}

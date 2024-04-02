@@ -10,13 +10,16 @@
 <div class="container">
     <h1>Printer Controller</h1>
     <div class="separator"></div> <!-- Separator line -->
+    <div class="printer-info">
+        <p>Status: <span id="printerStatus">Offline</span></p>
+        <p>Name: <span id="printerName">My Printer</span></p>
+    </div>
     <div class="buttons">
         <button onclick="homePrinter()">Home Printer</button>
         <button onclick="emergencyStop()">Emergency Stop</button>
         <button onclick="preheatPLA()">Preheat PLA</button>
         <button onclick="preheatABS()">Preheat ABS</button>
         <button onclick="coolDown()">Cool</button>
-
     </div>
 
     <form id="commandForm" onsubmit="sendCommand(event)">
