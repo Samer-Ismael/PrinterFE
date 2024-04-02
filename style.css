@@ -30,7 +30,7 @@ h1 {
 button {
     padding: 12px 24px;
     margin: 0 10px;
-    background-color: #083430;
+    background-color: #4b2b0c;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -40,16 +40,20 @@ button {
 }
 
 button:hover {
-    background-color: #1ec3b4;
+    background-color: #d29258;
 }
 
 #response {
     margin-top: 20px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    padding: 20px; /* Increase padding for more space inside the box */
+    background-color: #343a42;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 94.5%; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    overflow: auto; /* Add scrollbar if content exceeds the height */
 }
+
 
 .temps {
     text-align: center;
@@ -147,3 +151,27 @@ button:hover {
     margin: 0 auto;
 }
 
+.files-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.files {
+    display: flex;
+    width: 100%;
+}
+
+.file-input-wrapper {
+    flex-grow: 1; /* Takes up remaining space */
+    margin-right: 10px; /* Add some space between the input and button */
+}
+
+.upload-button {
+    width: fit-content; /* Adjust width based on content */
+}
+.clear-button {
+    margin-left: 10px; /* Add space between the buttons */
+    width: fit-content; /* Adjust width based on content */
+}
