@@ -68,3 +68,69 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update temperatures every 0.5 seconds
     setInterval(getTemperatures, 500);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch temperatures when the page loads
+    getTemperatures();
+    // Update temperatures every 0.5 seconds
+    setInterval(getTemperatures, 500);
+
+    // Fetch and display files when the page loads
+    getFiles();
+});
+
+function getFiles() {
+    fetch('your_files_endpoint_url')
+        .then(response => response.json())
+        .then(data => {
+            displayFiles(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function displayFiles(files) {
+    const fileListElement = document.getElementById('fileList');
+    fileListElement.innerHTML = ''; // Clear previous list
+
+    files.forEach(file => {
+        const listItem = document.createElement('li');
+        listItem.textContent = file.name;
+
+        // Add click event listener to list item
+        listItem.addEventListener('click', function() {
+            // Show the print button
+            document.getElementById('printFileButton').style.display = 'inline';
+            // Store the selected file name as a data attribute
+            document.getElementById('printFileButton').setAttribute('data-file-name', file.name);
+        });
+
+        fileListElement.appendChild(listItem);
+    });
+}
+
+function printSelectedFile() {
+    // Get the selected file name from the data attribute
+    const fileName = document.getElementById('printFileButton').getAttribute('data-file-name');
+    if (fileName) {
+        // Send request to API to print the selected file
+        sendPrintRequest(fileName);
+    }
+}
+
+function sendPrintRequest(fileName) {
+    // Send request to API to print the file
+    fetch('your_print_endpoint_url', {
+        method: 'POST',
+        body: JSON.stringify({ fileName: fileName }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response from the API
+            console.log('File printing request sent:', data);
+            // Optionally, display a message to the user indicating that the file is being printed
+        })
+        .catch(error => console.error('Error:', error));
+}

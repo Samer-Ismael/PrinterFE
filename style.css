@@ -1,21 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
     margin: 0;
     padding: 0;
+    color: #e1a56c;
 }
 
 .container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
     text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
 }
 
 .buttons {
@@ -25,25 +28,27 @@ h1 {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin: 0 10px;
-    background-color: #007bff;
+    background-color: #083430;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #1ec3b4;
 }
 
 #response {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
 }
 
 .temps {
@@ -51,10 +56,16 @@ button:hover {
     margin-top: 20px;
 }
 
-.temps button {
-    padding: 8px 20px;
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust color and opacity as needed */
+    margin: 20px 0; /* Adjust margin as needed */
 }
-/* Your existing CSS styles here */
+
+
+
 
 #commandForm {
     display: flex;
@@ -72,7 +83,10 @@ button:hover {
 #commandForm button[type="submit"] {
     margin-left: 10px;
 }
-/* Your existing CSS styles here */
+
+
+
+
 
 .temp-table {
     display: flex;
@@ -101,5 +115,35 @@ button:hover {
 
 .new-temp-input {
     width: 100%;
+}
+
+.button-container {
+    text-align: right;
+    margin-top: 10px; /
+}
+
+.files h2 {
+    text-align: center; /* Center-align the text */
+}
+
+.file-item {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin-bottom: 5px;
+}
+
+
+.camera {
+    margin-top: 20px;
+}
+
+.camera h2 {
+    text-align: center;
+}
+
+.camera iframe {
+    display: block;
+    margin: 0 auto;
 }
 

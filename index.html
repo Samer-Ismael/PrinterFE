@@ -10,12 +10,14 @@
 <div class="container">
     <h1>Printer Controller</h1>
     <div id="response"></div>
+    <div class="separator"></div> <!-- Separator line -->
     <div class="buttons">
         <button onclick="homePrinter()">Home Printer</button>
         <button onclick="emergencyStop()">Emergency Stop</button>
         <button onclick="preheatPLA()">Preheat PLA</button>
         <button onclick="preheatABS()">Preheat ABS</button>
     </div>
+
     <form id="commandForm" onsubmit="sendCommand(event)">
         <label for="command">Enter Command:</label>
         <input type="text" id="command" name="command" required>
@@ -35,6 +37,27 @@
                 <input type="number" id="newHeaterBedTemp" class="new-temp-input" placeholder="Set New Temp">
             </div>
         </div>
+    </div>
+
+    <div class="files">
+        <h2>Files in Server</h2>
+        <ul id="fileList"></ul>
+
+        <li class="file-item">file1.txt</li>
+        <li class="file-item">file2.jpg</li>
+        <li class="file-item">file3.pdf</li>
+
+
+        <!-- Button container -->
+        <div class="button-container">
+            <!-- Button to print selected file -->
+            <button id="printFileButton" onclick="printSelectedFile()">Print Selected File</button>
+        </div>
+    </div>
+
+    <div class="camera">
+        <h2>Camera</h2>
+        <iframe src="your_camera_link_here" width="640" height="480" frameborder="0"></iframe>
     </div>
 
 </div>
