@@ -18,7 +18,7 @@ function saveServerUrl() {
 }
 
 // Restore saved URL when the page loads
-window.onload = function() {
+window.onload = function () {
     FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || "";
 };
 
@@ -53,19 +53,20 @@ function sendCommand(event) {
     if (command.toLowerCase() === 'clear') {
         document.getElementById('response').innerText = '';
         document.getElementById('command').value = '';
-        return;
-    }else {
+
+    } else {
         document.getElementById('response').value = 'command sent: ' + command;
         sendGCodeCommand(command);
     }
 }
+
 function sendGCodeCommand(gCodeCommand) {
     const url = FLUIDD_SERVER_URL + `/printer/gcode/script?script=${encodeURIComponent(gCodeCommand)}`;
 
     if (gCodeCommand.toLowerCase() === 'clear') {
         document.getElementById('response').innerText = '';
         document.getElementById('command').value = '';
-        return;
+
 
     } else {
 
@@ -88,7 +89,8 @@ function sendGCodeCommand(gCodeCommand) {
             });
     }
 }
-document.getElementById('command').addEventListener('keydown', function(event) {
+
+document.getElementById('command').addEventListener('keydown', function (event) {
     // Check if the key pressed is Enter (key code 13)
     if (event.keyCode === 13) {
         // Prevent the default behavior of the Enter key (form submission)
@@ -110,9 +112,9 @@ function getTemperatures(includeMonitors) {
     const TEMPERATURE_STORE_ENDPOINT = "/server/temperature_store";
 
     const url = FLUIDD_SERVER_URL + TEMPERATURE_STORE_ENDPOINT;
-    const params = { include_monitors: includeMonitors };
+    const params = {include_monitors: includeMonitors};
 
-    fetch(url, { method: 'GET', params: params })
+    fetch(url, {method: 'GET', params: params})
         .then(response => response.json())
         .then(data => {
             const recentTemperatures = {};
@@ -147,7 +149,7 @@ function displayResponse(command, responseData) {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Fetch temperatures when the page loads
     getTemperatures();
     // Update temperatures every 0.5 seconds
@@ -164,8 +166,7 @@ function uploadFile(file) {
     displayResponse('Uploading file', file.name)
 
     fetch(url, {
-        method: 'POST',
-        body: formData
+        method: 'POST', body: formData
     })
         .then(response => response.json())
         .then(data => {
@@ -178,30 +179,32 @@ function uploadFile(file) {
             alert('Error uploading file. Please try again.');
         });
 }
-document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function () {
     const uploadButton = document.querySelector('.upload-button');
     const printButton = document.querySelector('.print-button');
     const cancelButton = document.querySelector('.cancel-button');
     const clearButton = document.querySelector('.clear-button');
     const fileInput = document.getElementById('fileInput');
 
-    uploadButton.addEventListener('click', function() {
+    uploadButton.addEventListener('click', function () {
         uploadFile(fileInput.files[0]);
     });
 
-    printButton.addEventListener('click', function() {
+    printButton.addEventListener('click', function () {
         const fileName = fileInput.files[0].name;
         printFile(fileName);
     });
 
-    cancelButton.addEventListener('click', function() {
+    cancelButton.addEventListener('click', function () {
         cancelPrint();
     });
 
-    clearButton.addEventListener('click', function() {
+    clearButton.addEventListener('click', function () {
         fileInput.value = '';
     });
 });
+
 // -------------------------------------------------------------------------------------------------------------------
 function printFile(fileName) {
     const url = FLUIDD_SERVER_URL + '/printer/print/start';
@@ -210,9 +213,7 @@ function printFile(fileName) {
     };
 
     fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
+        method: 'POST', body: JSON.stringify(data), headers: {
             'Content-Type': 'application/json'
         }
     })
@@ -232,9 +233,7 @@ function cancelPrint() {
     const url = FLUIDD_SERVER_URL + '/printer/print/cancel';
 
     fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({}),
-        headers: {
+        method: 'POST', body: JSON.stringify({}), headers: {
             'Content-Type': 'application/json'
         }
     })
@@ -276,11 +275,13 @@ function fetchPrinterInfo() {
 }
 
 fetchPrinterInfo();
+
 // Update printer status
 function updatePrinterStatus(status) {
     const printerStatusElement = document.getElementById('printerStatus');
     printerStatusElement.textContent = status;
 }
+
 // Update printer name
 function updatePrinterName(name) {
     const printerNameElement = document.getElementById('printerName');
@@ -316,6 +317,7 @@ function setNewHeaterBedTemp() {
     // Clear the input field after setting the temperature
     newTempInput.value = '';
 }
+
 //-------------------------------------------------------------------------------------------------------------------
 
 // Get all buttons on the page for the active state

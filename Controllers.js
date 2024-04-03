@@ -1,6 +1,6 @@
 // script.js
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const upButtons = document.querySelectorAll(".arrow-button.up");
     const downButtons = document.querySelectorAll(".arrow-button.down");
     const leftButtons = document.querySelectorAll(".arrow-button.left");
@@ -8,37 +8,37 @@ document.addEventListener("DOMContentLoaded", function() {
     const homeButtons = document.querySelectorAll(".home-button");
 
     // Function for up buttons
-    upButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    upButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 Y-5");
         });
     });
 
     // Function for down buttons
-    downButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    downButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 Y5");
         });
     });
 
     // Function for left buttons
-    leftButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    leftButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 X-5");
 
         });
     });
 
     // Function for right buttons
-    rightButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    rightButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 X5");
         });
     });
 
     // Function for home buttons
-    homeButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    homeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G28");
         });
     });
@@ -49,24 +49,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const additionalHomeButtons = document.querySelectorAll(".additional-buttons .home-button");
 
     // Function for additional up buttons
-    additionalUpButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    additionalUpButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 Z-5");
 
         });
     });
 
     // Function for additional down buttons
-    additionalDownButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    additionalDownButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G1 Z5");
 
         });
     });
 
     // Function for additional home buttons
-    additionalHomeButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    additionalHomeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("G28");
 
         });
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const calibrateHomeButtons = document.querySelectorAll(".additional-buttons-cal .home-button");
 
     // Function for calibrate home buttons
-    calibrateHomeButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
+    calibrateHomeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
             sendGCodeCommand("BED_MESH_CALIBRATE");
 
         });

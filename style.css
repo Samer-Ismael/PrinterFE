@@ -52,7 +52,6 @@ body {
 }
 
 
-
 h1 {
     text-align: center;
     font-size: 36px;
@@ -226,26 +225,33 @@ button.active {
         margin: 20px auto; /* Center the container */
         padding: 10px; /* Adjust padding for smaller screens */
     }
+
     h1 {
         font-size: 24px; /* Reduce heading font size for smaller screens */
         margin-bottom: 20px; /* Adjust heading margin for smaller screens */
     }
+
     .temps {
         margin-top: 10px; /* Adjust margin top for smaller screens */
     }
+
     .temp-row {
         flex-direction: column; /* Stack temperature rows vertically for smaller screens */
     }
+
     .temp-column {
         flex: 1; /* Expand temperature columns to full width */
         margin-bottom: 10px; /* Add space between temperature columns for smaller screens */
     }
+
     .new-temp-input {
         width: 100%; /* Make temperature input fields full width for smaller screens */
     }
+
     .files {
         flex-direction: column; /* Stack file buttons vertically for smaller screens */
     }
+
     .file-input-wrapper {
         margin-right: 0; /* Remove margin for file input wrapper for smaller screens */
         margin-bottom: 10px; /* Add space between the input and buttons for smaller screens */
@@ -257,8 +263,6 @@ button.active {
     width: 100%;
     height: auto;
 }
-
-
 
 
 .controller {
@@ -388,7 +392,7 @@ button.active {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal content */

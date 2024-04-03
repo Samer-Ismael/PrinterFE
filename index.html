@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Printer Controller</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -16,12 +16,12 @@
         <p>Status: <span id="printerStatus">Offline</span></p>
         <p>Name: <span id="printerName">No Printer Connected</span></p>
 
-        <button onclick="openModal()" class="register-button">Register Printer</button>
+        <button class="register-button" onclick="openModal()">Register Printer</button>
 
-        <div id="myModal" class="modal">
+        <div class="modal" id="myModal">
             <div class="modal-content">
                 <label for="serverUrlInput">Enter Server URL:</label>
-                <input type="text" id="serverUrlInput">
+                <input id="serverUrlInput" type="text">
                 <button onclick="saveServerUrl()">Save URL</button>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
     <form id="commandForm" onsubmit="sendCommand(event)">
         <label for="command">Enter Command:</label>
-        <input type="text" id="command" name="command" required>
+        <input id="command" name="command" required type="text">
         <button type="submit">Send Command</button>
     </form>
     <div id="response"></div>
@@ -51,14 +51,14 @@
         <div class="temp-row">
             <div class="temp-column">
                 <span class="temp-label">Extruder:</span>
-                <span id="extruderTemp" class="temp-value">0</span> <!-- Default value 0 -->
-                <input type="number" id="newExtruderTemp" class="new-temp-input" placeholder="Set New Temp">
+                <span class="temp-value" id="extruderTemp">0</span> <!-- Default value 0 -->
+                <input class="new-temp-input" id="newExtruderTemp" placeholder="Set New Temp" type="number">
                 <button onclick="setNewExtruderTemp()">Set</button>
             </div>
             <div class="temp-column">
                 <span class="temp-label">Heater Bed:</span>
-                <span id="heaterBedTemp" class="temp-value">0</span> <!-- Default value 0 -->
-                <input type="number" id="newHeaterBedTemp" class="new-temp-input" placeholder="Set New Temp">
+                <span class="temp-value" id="heaterBedTemp">0</span> <!-- Default value 0 -->
+                <input class="new-temp-input" id="newHeaterBedTemp" placeholder="Set New Temp" type="number">
                 <button onclick="setNewHeaterBedTemp()">Set</button>
             </div>
         </div>
@@ -70,12 +70,12 @@
         <h2>Upload File</h2>
         <div class="files">
             <div class="file-input-wrapper">
-                <input type="file" name="fileInput" id="fileInput">
+                <input id="fileInput" name="fileInput" type="file">
             </div>
-            <button type="button" class="clear-button">Clear</button>
-            <button type="submit" class="upload-button">Upload</button>
-            <button type="button" class="print-button">Print</button>
-            <button type="button" class="cancel-button">Cancel</button>
+            <button class="clear-button" type="button">Clear</button>
+            <button class="upload-button" type="submit">Upload</button>
+            <button class="print-button" type="button">Print</button>
+            <button class="cancel-button" type="button">Cancel</button>
         </div>
     </div>
 
@@ -105,7 +105,7 @@
     <div class="camera">
         <div class="separator"></div> <!-- Separator line -->
         <h2>Camera</h2>
-        <iframe src="your_camera_link_here" width="640" height="480" frameborder="0"></iframe>
+        <iframe frameborder="0" height="480" src="your_camera_link_here" width="640"></iframe>
     </div>
 
 </div>
