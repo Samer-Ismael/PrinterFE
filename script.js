@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(sendUpdatesToDisplayResponse, 1000);
 });
 
-// Function to fetch system information from the /machine/system_info endpoint
 function fetchSystemInfo() {
     return fetch(FLUIDD_SERVER_URL + '/machine/system_info')
         .then(response => {
@@ -184,8 +183,6 @@ function fetchSystemInfo() {
             throw error; // Rethrow the error for handling
         });
 }
-
-// Function to fetch additional system statistics from the /machine/proc_stats endpoint
 
 const updateInterval = 1000;
 
@@ -206,7 +203,6 @@ function fetchSystemStats() {
         });
 }
 
-// Function to update the DOM with system information and statistics
 function updateDOM() {
     fetchSystemInfo()
         .then(systemInfo => {
@@ -251,8 +247,6 @@ function updateDOM() {
             console.error('Error fetching system stats:', error);
         });
 }
-
-updateDOM();
 
 setInterval(updateDOM, updateInterval);
 
