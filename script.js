@@ -1,20 +1,25 @@
 let FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || ""; // Get stored URL or initialize as empty string
 
-// Function to open the modal
+var modal = document.getElementById("myModal");
+
 function openModal() {
-    document.getElementById("myModal").style.display = "block";
+    modal.style.display = "block";
 }
 
-// Function to close the modal
 function closeModal() {
-    document.getElementById("myModal").style.display = "none";
+    modal.style.display = "none";
 }
 
-// Function to save the server URL
 function saveServerUrl() {
     FLUIDD_SERVER_URL = document.getElementById("serverUrlInput").value;
     localStorage.setItem("FLUIDD_SERVER_URL", FLUIDD_SERVER_URL); // Save URL to localStorage
     closeModal(); // Close the modal after saving the URL
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeModal();
+    }
 }
 
 // Restore saved URL when the page loads

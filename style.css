@@ -424,3 +424,11 @@ button.active {
 .register-button {
     margin-left: auto;
 }
+
+.modal-content {
+    text-align: start;
+}
+
+.instruction-text {
+    margin-bottom: 10px;
+}
