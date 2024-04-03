@@ -1,85 +1,104 @@
 // script.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    const upButtons = document.querySelectorAll(".arrow-button.up");
-    const downButtons = document.querySelectorAll(".arrow-button.down");
-    const leftButtons = document.querySelectorAll(".arrow-button.left");
-    const rightButtons = document.querySelectorAll(".arrow-button.right");
-    const homeButtons = document.querySelectorAll(".home-button");
+    const regularButtons = {
+        upX: document.querySelectorAll(".arrow-button.upX"),
+        downX: document.querySelectorAll(".arrow-button.downX"),
+        left: document.querySelectorAll(".arrow-button.left"),
+        right: document.querySelectorAll(".arrow-button.right"),
+        home: document.querySelectorAll(".home-button")
+    };
 
-    // Function for up buttons
-    upButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 Y-5");
+    const additionalButtons = {
+        upZ: document.querySelectorAll(".additional-buttons .arrow-button.upZ"),
+        downZ: document.querySelectorAll(".additional-buttons .arrow-button.downZ"),
+        home: document.querySelectorAll(".additional-buttons .home-button")
+    };
+
+    // Function for regular buttons
+    function attachRegularButtonListeners(buttons) {
+        buttons.upX.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 Y5 F7800");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for down buttons
-    downButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 Y5");
+        buttons.downX.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 Y-5 F7800");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for left buttons
-    leftButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 X-5");
-
+        buttons.left.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 X-5 F7800");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for right buttons
-    rightButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 X5");
+        buttons.right.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 X5 F7800");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for home buttons
-    homeButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G28");
+        buttons.home.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G28");
+            });
         });
-    });
+    }
 
-    // Additional button functions
-    const additionalUpButtons = document.querySelectorAll(".additional-buttons .arrow-button.up");
-    const additionalDownButtons = document.querySelectorAll(".additional-buttons .arrow-button.down");
-    const additionalHomeButtons = document.querySelectorAll(".additional-buttons .home-button");
-
-    // Function for additional up buttons
-    additionalUpButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 Z-5");
-
+    // Function for additional buttons
+    function attachAdditionalButtonListeners(buttons) {
+        buttons.upZ.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 Z5 F600");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for additional down buttons
-    additionalDownButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G1 Z5");
-
+        buttons.downZ.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G91");
+                sendGCodeCommand("G1 Z-5 F600");
+                sendGCodeCommand("G90");
+            });
         });
-    });
 
-    // Function for additional home buttons
-    additionalHomeButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("G28");
-
+        buttons['home'].forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("G28");
+            });
         });
-    });
+    }
 
-    // Additional button functions for calibrate
-    const calibrateHomeButtons = document.querySelectorAll(".additional-buttons-cal .home-button");
+    // Attach event listeners for regular buttons
+    attachRegularButtonListeners(regularButtons);
 
-    // Function for calibrate home buttons
-    calibrateHomeButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            sendGCodeCommand("BED_MESH_CALIBRATE");
+    // Attach event listeners for additional buttons
+    attachAdditionalButtonListeners(additionalButtons);
+});
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    try {
+        const calibrateHomeButtons = document.querySelectorAll(".additional-buttons-cal .home-button");
+
+        calibrateHomeButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                sendGCodeCommand("BED_MESH_CALIBRATE");
+            });
         });
-    });
+    } catch (error) {
+        console.error("Error attaching event listeners:", error);
+    }
 });
