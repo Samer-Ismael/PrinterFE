@@ -11,9 +11,11 @@
     <div class="title-container">
         <h1 class="title">Printer Controller</h1>
     </div>
-    <div class="separator"></div> <!-- Separator line -->
     <div class="printer-info">
         <div class="basic-info">
+            <button class="register-button" onclick="openModal()">Register Printer</button>
+            <div class="separator"></div> <!-- Separator line -->
+
             <p>Status: <span id="printerStatus">Offline</span></p>
             <p>Name: <span id="printerName">No Printer Connected</span></p>
         </div>
@@ -22,9 +24,16 @@
             <p>CPU Model: <span id="cpuModel">Unknown</span></p>
             <p>Distribution: <span id="distribution">Unknown</span></p>
             <p>SD Card Capacity: <span id="sdCardCapacity">Unknown</span></p>
+
+
+            <p>CPU usage: <span id="cpuUUsage">Unknown</span></p>
+            <p>CPU temp: <span id="cpuTemp">Unknown</span></p>
+            <p>System memory available: <span id="systemMemoryAvailable">Unknown</span></p>
+            <p>System memory used: <span id="systemMemoryUsed">Unknown</span></p>
+
+
         </div>
 
-        <button class="register-button" onclick="openModal()">Register Printer</button>
 
         <div class="modal" id="myModal">
             <div class="modal-content">

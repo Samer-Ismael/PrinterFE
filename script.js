@@ -16,7 +16,7 @@ function saveServerUrl() {
     closeModal(); // Close the modal after saving the URL
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         closeModal();
     }
@@ -167,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(sendUpdatesToDisplayResponse, 1000);
 });
 
-function sendUpdatesToDisplayResponse() {
-    // HTTP request to fetch the system info
-    fetch(FLUIDD_SERVER_URL + '/machine/system_info')
+// Function to fetch system information from the /machine/system_info endpoint
+function fetchSystemInfo() {
+    return fetch(FLUIDD_SERVER_URL + '/machine/system_info')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -177,12 +177,44 @@ function sendUpdatesToDisplayResponse() {
             return response.json(); // Parse the JSON response
         })
         .then(data => {
+            return data.result.system_info; // Extract system information
+        })
+        .catch(error => {
+            console.error('Error fetching system info:', error);
+            throw error; // Rethrow the error for handling
+        });
+}
+
+// Function to fetch additional system statistics from the /machine/proc_stats endpoint
+
+const updateInterval = 1000;
+
+function fetchSystemStats() {
+    return fetch(FLUIDD_SERVER_URL + '/machine/proc_stats')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            return data.result; // Extract system statistics
+        })
+        .catch(error => {
+            console.error('Error fetching system stats:', error);
+            throw error; // Rethrow the error for handling
+        });
+}
+
+// Function to update the DOM with system information and statistics
+function updateDOM() {
+    fetchSystemInfo()
+        .then(systemInfo => {
             // Extract specific system information
-            const systemInfo = data.result.system_info;
             const cpuInfo = systemInfo.cpu_info;
             const distribution = systemInfo.distribution;
             const sdInfo = systemInfo.sd_info;
-            const totalMemoryKB = systemInfo.cpu_info.total_memory;
+            const totalMemoryKB = cpuInfo.total_memory;
 
             // Convert total memory to megabytes
             const totalMemoryMB = (totalMemoryKB / 1024).toFixed(2);
@@ -192,20 +224,34 @@ function sendUpdatesToDisplayResponse() {
             document.getElementById('cpuModel').innerText = cpuInfo.model;
             document.getElementById('distribution').innerText = `${distribution.name} ${distribution.version}`;
             document.getElementById('sdCardCapacity').innerText = sdInfo.capacity;
-
-            // Optionally, you can also update the printer status and name
-            // For example:
-            // document.getElementById('printerStatus').innerText = 'Online';
-            // document.getElementById('printerName').innerText = 'My Printer';
-
         })
         .catch(error => {
-            // Display an error message if fetching system information fails
-            console.error('Error fetching system info:', error);
             const printerStatusSpan = document.getElementById('printerStatus');
             printerStatusSpan.innerText = 'Failed to fetch system information. Please try again later.';
         });
+
+    fetchSystemStats()
+        .then(systemStats => {
+            // Extract specific system stats
+            const cpuUsage = systemStats.system_cpu_usage.cpu;
+            const cpuTemp = systemStats.cpu_temp;
+            const systemMemoryAvailable = systemStats.system_memory.available;
+            const systemMemoryUsed = systemStats.system_memory.used;
+
+            // Update the content of the additional lines of information
+            document.getElementById('cpuUUsage').innerText = `${cpuUsage.toFixed(2)}%`;
+            document.getElementById('cpuTemp').innerText = `${cpuTemp.toFixed(2)}°C`;
+            document.getElementById('systemMemoryAvailable').innerText = `${systemMemoryAvailable} KB`;
+            document.getElementById('systemMemoryUsed').innerText = `${systemMemoryUsed} KB`;
+        })
+        .catch(error => {
+            console.error('Error fetching system stats:', error);
+        });
 }
+
+updateDOM();
+
+setInterval(updateDOM, updateInterval);
 
 // -------------------------------------------------------------------------------------------------------------------
 function uploadFile(file) {
