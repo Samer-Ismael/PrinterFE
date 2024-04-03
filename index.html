@@ -8,53 +8,60 @@
 </head>
 <body>
 <div class="container">
+    <!----------------------------------- Title Section ----------------------------------->
     <div class="title-container">
         <h1 class="title">Printer Controller</h1>
     </div>
+
+    <!----------------------------------- Printer Information Section ----------------------------------->
     <div class="printer-info">
+        <!-- Basic Information -->
         <div class="basic-info">
+            <!-- Printer Control Buttons -->
             <button class="register-button" onclick="openModal()">Register Printer</button>
             <button class="register-button" onclick="updateSystem()">Update System</button>
             <button class="register-button" onclick="updateKlipper()">Update Klipper</button>
             <button class="register-button" onclick="updateMoonraker()">Update Moonraker</button>
-            <div class="separator"></div> <!-- Separator line -->
-
+            <!-- Separator Line -->
+            <div class="separator"></div>
+            <!-- Printer Status -->
             <p>Status: <span id="printerStatus">Offline</span></p>
+            <!-- Printer Name -->
             <p>Name: <span id="printerName">No Printer Connected</span></p>
         </div>
+
+        <!-- Additional Information -->
         <div class="additional-info">
+            <!-- Memory Information -->
             <p>Total Memory: <span id="totalMemory">0 MB</span></p>
             <p>CPU Model: <span id="cpuModel">Unknown</span></p>
             <p>Distribution: <span id="distribution">Unknown</span></p>
             <p>SD Card Capacity: <span id="sdCardCapacity">Unknown</span></p>
-
-
+            <!-- System Usage Information -->
             <p>CPU usage: <span id="cpuUUsage">Unknown</span></p>
             <p>CPU temp: <span id="cpuTemp">Unknown</span></p>
             <p>System memory available: <span id="systemMemoryAvailable">Unknown</span></p>
             <p>System memory used: <span id="systemMemoryUsed">Unknown</span></p>
-
-
         </div>
 
-
+        <!-- Modal Section -->
         <div class="modal" id="myModal">
             <div class="modal-content">
+                <!-- Modal Instructions -->
                 <div class="instruction-text">
                     <p>Enter the URL of your Klipper Server!</p>
                     <p>For example: http://klipper-ip-address</p>
                     <p>Remove the "/" that will be at the end of the URL when you copy and paste it.</p>
                 </div>
+                <!-- Server URL Input -->
                 <label for="serverUrlInput">Enter Server URL:</label>
                 <input id="serverUrlInput" type="text">
                 <button onclick="saveServerUrl()">Save URL</button>
             </div>
         </div>
-
-
     </div>
-    <div class="separator"></div> <!-- Separator line -->
 
+    <!----------------------------------- Button Section ----------------------------------->
     <div class="buttons">
         <button onclick="homePrinter()">Home Printer</button>
         <button onclick="emergencyStop()">Emergency Stop</button>
@@ -63,15 +70,19 @@
         <button onclick="coolDown()">Cool Down</button>
     </div>
 
+    <!----------------------------------- Command Form Section ----------------------------------->
     <form id="commandForm" onsubmit="sendCommand(event)">
         <label for="command">Enter Command:</label>
         <input id="command" name="command" required type="text">
         <button type="submit">Send Command</button>
     </form>
+
+    <!----------------------------------- Response Section ----------------------------------->
     <div id="response"></div>
+
+    <!----------------------------------- Temperatures Section ----------------------------------->
     <div class="temps">
         <div class="separator"></div> <!-- Separator line -->
-
         <h2>Temperatures</h2>
         <div class="temp-row">
             <div class="temp-column">
@@ -89,7 +100,7 @@
         </div>
     </div>
 
-
+    <!----------------------------------- Files Section ----------------------------------->
     <div class="files-container">
         <div class="separator"></div> <!-- Separator line -->
         <h2>Upload File</h2>
@@ -104,6 +115,7 @@
         </div>
     </div>
 
+    <!----------------------------------- Controller Section ----------------------------------->
     <div class="controller">
         <div class="separator"></div> <!-- Separator line -->
         <h2>Controller</h2>
@@ -123,17 +135,18 @@
         </div>
         <div class="additional-buttons-cal">
             <button class="home-button">Calibrate Printer</button>
-
         </div>
     </div>
 
+    <!----------------------------------- Camera Section ----------------------------------->
     <div class="camera">
         <div class="separator"></div> <!-- Separator line -->
         <h2>Camera</h2>
         <iframe frameborder="0" height="480" src="your_camera_link_here" width="640"></iframe>
     </div>
-
 </div>
+
+<!----------------------------------- Script Files ----------------------------------->
 <script src="script.js"></script>
 <script src="Controllers.js"></script>
 <script src="sysremInfo.js"></script>
