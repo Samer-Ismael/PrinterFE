@@ -15,7 +15,21 @@
     <div class="printer-info">
         <p>Status: <span id="printerStatus">Offline</span></p>
         <p>Name: <span id="printerName">No Printer Connected</span></p>
+
+        <button onclick="openModal()" class="register-button">Register Printer</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <label for="serverUrlInput">Enter Server URL:</label>
+                <input type="text" id="serverUrlInput">
+                <button onclick="saveServerUrl()">Save URL</button>
+            </div>
+        </div>
+
+
     </div>
+    <div class="separator"></div> <!-- Separator line -->
+
     <div class="buttons">
         <button onclick="homePrinter()">Home Printer</button>
         <button onclick="emergencyStop()">Emergency Stop</button>

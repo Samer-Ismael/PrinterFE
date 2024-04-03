@@ -17,25 +17,25 @@ body {
 
 .title-container {
     text-align: center;
-    margin-top: 50px; /* Adjust margin as needed */
+    margin-top: 50px;
 }
 
 .title {
     font-size: 36px;
-    color: #d29258; /* Your chosen color */
-    text-shadow: 0 0 10px #d29258; /* Add a subtle shadow */
-    animation: glowAnimation 1.5s ease-in-out infinite alternate, floatAnimation 4s ease-in-out infinite; /* Add glowing and floating animations */
+    color: #d29258;
+    text-shadow: 0 0 10px #d29258;
+    animation: glowAnimation 1.5s ease-in-out infinite alternate, floatAnimation 4s ease-in-out infinite;
 }
 
 @keyframes glowAnimation {
     0% {
-        text-shadow: 0 0 10px #361c1c; /* Start with a subtle shadow */
+        text-shadow: 0 0 10px #361c1c;
     }
     50% {
-        text-shadow: 0 0 20px #876341; /* Increase shadow size */
+        text-shadow: 0 0 20px #876341;
     }
     100% {
-        text-shadow: 0 0 10px #d29258; /* Return to subtle shadow */
+        text-shadow: 0 0 10px #d29258;
     }
 }
 
@@ -366,4 +366,46 @@ button.active {
 
 .additional-buttons-cal > .home-button:hover {
     background-color: #d29258;
+}
+
+/* Button styles */
+.register-button {
+    padding: 10px 20px; /* Adjust padding for button size */
+    font-size: 16px; /* Adjust font size */
+    background-color: #4b2b0c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #343a42;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.printer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-button {
+    margin-left: 10px;
 }

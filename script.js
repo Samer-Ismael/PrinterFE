@@ -1,5 +1,26 @@
+let FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || ""; // Get stored URL or initialize as empty string
 
-const FLUIDD_SERVER_URL = "http://192.168.0.71";
+// Function to open the modal
+function openModal() {
+    document.getElementById("myModal").style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+// Function to save the server URL
+function saveServerUrl() {
+    FLUIDD_SERVER_URL = document.getElementById("serverUrlInput").value;
+    localStorage.setItem("FLUIDD_SERVER_URL", FLUIDD_SERVER_URL); // Save URL to localStorage
+    closeModal(); // Close the modal after saving the URL
+}
+
+// Restore saved URL when the page loads
+window.onload = function() {
+    FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || "";
+};
 
 function homePrinter() {
     sendGCodeCommand('G28');
