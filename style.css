@@ -8,12 +8,50 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 10px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
+
+.title-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin as needed */
+}
+
+.title {
+    font-size: 36px;
+    color: #d29258; /* Your chosen color */
+    text-shadow: 0 0 10px #d29258; /* Add a subtle shadow */
+    animation: glowAnimation 1.5s ease-in-out infinite alternate, floatAnimation 4s ease-in-out infinite; /* Add glowing and floating animations */
+}
+
+@keyframes glowAnimation {
+    0% {
+        text-shadow: 0 0 10px #361c1c; /* Start with a subtle shadow */
+    }
+    50% {
+        text-shadow: 0 0 20px #876341; /* Increase shadow size */
+    }
+    100% {
+        text-shadow: 0 0 10px #d29258; /* Return to subtle shadow */
+    }
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
 
 h1 {
     text-align: center;
@@ -25,6 +63,7 @@ h1 {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 button {
