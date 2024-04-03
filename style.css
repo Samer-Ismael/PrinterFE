@@ -406,10 +406,21 @@ button.active {
 
 .printer-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+
 }
 
+.basic-info, .additional-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.basic-info p, .additional-info p {
+    flex: 0 0 50%; /* Set width to 50% for two columns */
+    margin-bottom: 5px; /* Add some margin between paragraphs */
+}
+
+
 .register-button {
-    margin-left: 10px;
+    margin-left: auto;
 }

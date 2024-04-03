@@ -13,8 +13,16 @@
     </div>
     <div class="separator"></div> <!-- Separator line -->
     <div class="printer-info">
-        <p>Status: <span id="printerStatus">Offline</span></p>
-        <p>Name: <span id="printerName">No Printer Connected</span></p>
+        <div class="basic-info">
+            <p>Status: <span id="printerStatus">Offline</span></p>
+            <p>Name: <span id="printerName">No Printer Connected</span></p>
+        </div>
+        <div class="additional-info">
+            <p>Total Memory: <span id="totalMemory">0 MB</span></p>
+            <p>CPU Model: <span id="cpuModel">Unknown</span></p>
+            <p>Distribution: <span id="distribution">Unknown</span></p>
+            <p>SD Card Capacity: <span id="sdCardCapacity">Unknown</span></p>
+        </div>
 
         <button class="register-button" onclick="openModal()">Register Printer</button>
 

@@ -157,6 +157,52 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // -------------------------------------------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Call the sendUpdatesToDisplayResponse function every 1 second
+    setInterval(sendUpdatesToDisplayResponse, 1000);
+});
+
+function sendUpdatesToDisplayResponse() {
+    // HTTP request to fetch the system info
+    fetch('http://192.168.0.71:7125/machine/system_info')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
+        .then(data => {
+            // Extract specific system information
+            const systemInfo = data.result.system_info;
+            const cpuInfo = systemInfo.cpu_info;
+            const distribution = systemInfo.distribution;
+            const sdInfo = systemInfo.sd_info;
+            const totalMemoryKB = systemInfo.cpu_info.total_memory;
+
+            // Convert total memory to megabytes
+            const totalMemoryMB = (totalMemoryKB / 1024).toFixed(2);
+
+            // Update the content of the additional lines of information
+            document.getElementById('totalMemory').innerText = `${totalMemoryMB} MB`;
+            document.getElementById('cpuModel').innerText = cpuInfo.model;
+            document.getElementById('distribution').innerText = `${distribution.name} ${distribution.version}`;
+            document.getElementById('sdCardCapacity').innerText = sdInfo.capacity;
+
+            // Optionally, you can also update the printer status and name
+            // For example:
+            // document.getElementById('printerStatus').innerText = 'Online';
+            // document.getElementById('printerName').innerText = 'My Printer';
+
+        })
+        .catch(error => {
+            // Display an error message if fetching system information fails
+            console.error('Error fetching system info:', error);
+            const printerStatusSpan = document.getElementById('printerStatus');
+            printerStatusSpan.innerText = 'Failed to fetch system information. Please try again later.';
+        });
+}
+
+// -------------------------------------------------------------------------------------------------------------------
 function uploadFile(file) {
     const url = FLUIDD_SERVER_URL + '/server/files/upload';
     const formData = new FormData();
