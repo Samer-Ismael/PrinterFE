@@ -238,11 +238,14 @@ function updateDOM() {
             const systemMemoryAvailable = systemStats.system_memory.available;
             const systemMemoryUsed = systemStats.system_memory.used;
 
+            const memoryAvailbleMB = (systemMemoryAvailable / 1024).toFixed(2);
+            const memoryUsedMB = (systemMemoryUsed / 1024).toFixed(2);
+
             // Update the content of the additional lines of information
             document.getElementById('cpuUUsage').innerText = `${cpuUsage.toFixed(2)}%`;
             document.getElementById('cpuTemp').innerText = `${cpuTemp.toFixed(2)}°C`;
-            document.getElementById('systemMemoryAvailable').innerText = `${systemMemoryAvailable} KB`;
-            document.getElementById('systemMemoryUsed').innerText = `${systemMemoryUsed} KB`;
+            document.getElementById('systemMemoryAvailable').innerText = `${memoryAvailbleMB} MB`;
+            document.getElementById('systemMemoryUsed').innerText = `${memoryUsedMB} MB`;
         })
         .catch(error => {
             console.error('Error fetching system stats:', error);
