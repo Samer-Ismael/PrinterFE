@@ -1,3 +1,5 @@
+/* ---------------------- Body Styles ---------------------- */
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #151515;
@@ -5,6 +7,8 @@ body {
     padding: 0;
     color: #e1a56c;
 }
+
+/* ---------------------- Container Styles ---------------------- */
 
 .container {
     max-width: 800px;
@@ -14,6 +18,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
+
+/* ---------------------- Title Styles ---------------------- */
 
 .title-container {
     text-align: center;
@@ -51,12 +57,15 @@ body {
     }
 }
 
+/* ---------------------- Heading Styles ---------------------- */
 
 h1 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 30px;
 }
+
+/* ---------------------- Button Styles ---------------------- */
 
 .buttons {
     display: flex;
@@ -90,6 +99,8 @@ button.active {
     background-color: #4d5158;
 }
 
+/* ---------------------- Response Styles ---------------------- */
+
 #response {
     margin-top: 20px;
     padding: 20px;
@@ -100,6 +111,8 @@ button.active {
     height: 200px;
     overflow: auto;
 }
+
+/* ---------------------- Temps Styles ---------------------- */
 
 .temps {
     text-align: center;
@@ -112,6 +125,8 @@ button.active {
     background-color: rgba(255, 255, 255, 0.2);
     margin: 20px 0;
 }
+
+/* ---------------------- Command Form Styles ---------------------- */
 
 #commandForm {
     display: flex;
@@ -129,6 +144,8 @@ button.active {
 #commandForm button[type="submit"] {
     margin-left: 10px;
 }
+
+/* ---------------------- Temp Table Styles ---------------------- */
 
 .temp-table {
     display: flex;
@@ -155,14 +172,20 @@ button.active {
     margin-bottom: 5px;
 }
 
+/* ---------------------- New Temp Input Styles ---------------------- */
+
 .new-temp-input {
     width: 100%;
 }
+
+/* ---------------------- Button Container Styles ---------------------- */
 
 .button-container {
     text-align: right;
     margin-top: 10px;
 }
+
+/* ---------------------- Files Styles ---------------------- */
 
 .files h2 {
     text-align: center;
@@ -174,6 +197,10 @@ button.active {
     font-family: Arial, sans-serif;
     margin-bottom: 5px;
 }
+
+/* ---------------------- Camera Styles ---------------------- */
+
+/* ---------------------- Camera Styles ---------------------- */
 
 .camera {
     margin-top: 20px;
@@ -189,12 +216,16 @@ button.active {
     margin: 0 auto;
 }
 
+/* ---------------------- Files Container Styles ---------------------- */
+
 .files-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
+
+/* ---------------------- Files Styles ---------------------- */
 
 .files {
     display: flex;
@@ -216,60 +247,58 @@ button.active {
     width: 120px;
 }
 
+/* ---------------------- Responsive Styles ---------------------- */
 
-/* ------------------------------------------------------------------------------------------------------------ */
-/* Responsive styles */
 @media screen and (max-width: 650px) {
     .container {
-        max-width: 100%; /* Adjust container width for smaller screens */
-        margin: 20px auto; /* Center the container */
-        padding: 10px; /* Adjust padding for smaller screens */
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 10px;
     }
 
     h1 {
-        font-size: 24px; /* Reduce heading font size for smaller screens */
-        margin-bottom: 20px; /* Adjust heading margin for smaller screens */
+        font-size: 24px;
+        margin-bottom: 20px;
     }
 
     .temps {
-        margin-top: 10px; /* Adjust margin top for smaller screens */
+        margin-top: 10px;
     }
 
     .temp-row {
-        flex-direction: column; /* Stack temperature rows vertically for smaller screens */
+        flex-direction: column;
     }
 
     .temp-column {
-        flex: 1; /* Expand temperature columns to full width */
-        margin-bottom: 10px; /* Add space between temperature columns for smaller screens */
+        flex: 1;
+        margin-bottom: 10px;
     }
 
     .new-temp-input {
-        width: 100%; /* Make temperature input fields full width for smaller screens */
+        width: 100%;
     }
 
     .files {
-        flex-direction: column; /* Stack file buttons vertically for smaller screens */
+        flex-direction: column;
     }
 
     .file-input-wrapper {
-        margin-right: 0; /* Remove margin for file input wrapper for smaller screens */
-        margin-bottom: 10px; /* Add space between the input and buttons for smaller screens */
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 }
 
-/* Common styles */
+/* ---------------------- Common Styles ---------------------- */
+
 .image {
     width: 100%;
     height: auto;
 }
 
-
 .controller {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .separator {
@@ -280,8 +309,8 @@ button.active {
 }
 
 .controller h2 {
-    text-align: center; /* Center the text horizontally */
-    margin: 0 auto; /* Center the h2 horizontally */
+    text-align: center;
+    margin: 0 auto;
 }
 
 .controller-buttons {
@@ -293,6 +322,8 @@ button.active {
 .controller-buttons > div {
     display: flex;
 }
+
+/* ---------------------- Arrow Button Styles ---------------------- */
 
 .arrow-button {
     padding: 10px 10px;
@@ -311,6 +342,8 @@ button.active {
     background-color: #d29258;
 }
 
+/* ---------------------- Home Button Styles ---------------------- */
+
 .home-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -324,12 +357,13 @@ button.active {
     width: 70px;
     display: flex;
     justify-content: center;
-
 }
 
 .home-button:hover {
     background-color: #d29258;
 }
+
+/* ---------------------- Additional Buttons Styles ---------------------- */
 
 .additional-buttons {
     display: flex;
@@ -372,7 +406,8 @@ button.active {
     background-color: #d29258;
 }
 
-/* Button styles */
+/* ---------------------- Button Styles ---------------------- */
+
 .register-button {
     padding: 10px 20px; /* Adjust padding for button size */
     font-size: 16px; /* Adjust font size */
@@ -382,6 +417,8 @@ button.active {
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* ---------------------- Modal Styles ---------------------- */
 
 .modal {
     display: none;
@@ -395,7 +432,8 @@ button.active {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal content */
+/* ---------------------- Modal Content Styles ---------------------- */
+
 .modal-content {
     background-color: #343a42;
     margin: 10% auto;
@@ -404,22 +442,28 @@ button.active {
     width: 60%;
 }
 
+/* ---------------------- Printer Info Styles ---------------------- */
+
 .printer-info {
     display: flex;
     flex-direction: column;
-
 }
 
-.basic-info, .additional-info {
+/* ---------------------- Basic Info and Additional Info Styles ---------------------- */
+
+.basic-info,
+.additional-info {
     display: flex;
     flex-wrap: wrap;
 }
 
-.basic-info p, .additional-info p {
+.basic-info p,
+.additional-info p {
     flex: 0 0 50%; /* Set width to 50% for two columns */
     margin-bottom: 5px; /* Add some margin between paragraphs */
 }
 
+/* ---------------------- Common Styles ---------------------- */
 
 .register-button {
     margin-left: auto;
