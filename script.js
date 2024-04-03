@@ -304,3 +304,31 @@ buttons.forEach(button => {
         }, 100); // Adjust the delay as needed
     });
 });
+
+
+// Function to send G-code command to the printer
+function sendGcodeCommand(command) {
+    // Replace this with your logic to send the G-code command to the printer
+    sendGCodeCommand(command);
+}
+
+// Function to update fan speed value
+function updateFanSpeed() {
+    const slider = document.getElementById('fan-speed');
+    const speedValue = document.getElementById('fan-speed-value');
+    speedValue.textContent = slider.value + '%';
+}
+
+// Function to send G-code command with fan speed value
+function setFanSpeed() {
+    const slider = document.getElementById('fan-speed');
+    const fanSpeed = slider.value;
+    const gcodeCommand = 'M106 S' + fanSpeed;
+    sendGcodeCommand(gcodeCommand);
+}
+
+// Attach event listeners
+document.getElementById('fan-speed').addEventListener('input', updateFanSpeed);
+document.getElementById('set-fan-speed').addEventListener('click', setFanSpeed);
+
+

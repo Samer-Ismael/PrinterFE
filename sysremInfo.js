@@ -120,3 +120,45 @@ function updatePrinterName(name) {
     const printerNameElement = document.getElementById('printerName');
     printerNameElement.textContent = name;
 }
+
+function fetchPrinterObjectStatus() {
+    // Endpoint URL
+    const endpoint = FLUIDD_SERVER_URL + '/printer/objects/query?gcode_move&toolhead&extruder=target,temperature';
+
+    // Fetch data from the endpoint
+    fetch(endpoint)
+        .then(response => response.json())
+        .then(data => {
+            // Process the response data
+            const result = data.result;
+            const status = result.status;
+
+            // Extract position values from toolhead status
+            const toolheadPosition = status.toolhead.position;
+
+            // Extract X, Y, and Z values from the position array
+            const xPosition = toolheadPosition[0];
+            const yPosition = toolheadPosition[1];
+            const zPosition = toolheadPosition[2];
+
+            // Update the UI with the extracted position values
+            document.getElementById('X').textContent = xPosition;
+            document.getElementById('Y').textContent = yPosition;
+            document.getElementById('Z').textContent = zPosition;
+        })
+        .catch(error => {
+            console.error('Error fetching printer object status:', error);
+        });
+}
+
+// Function to fetch printer object status every 1 second
+function fetchPrinterObjectStatusPeriodically() {
+    // Initial fetch
+    fetchPrinterObjectStatus();
+
+    // Fetch every 1 second
+    setInterval(fetchPrinterObjectStatus, 1000);
+}
+
+// Call the function to start fetching printer object status periodically
+fetchPrinterObjectStatusPeriodically();

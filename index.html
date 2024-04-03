@@ -65,7 +65,6 @@
 
     <!----------------------------------- Button Section ----------------------------------->
     <div class="buttons">
-        <button onclick="homePrinter()">Home Printer</button>
         <button onclick="emergencyStop()">Emergency Stop</button>
         <button onclick="preheatPLA()">Preheat PLA</button>
         <button onclick="preheatABS()">Preheat ABS</button>
@@ -138,7 +137,37 @@
         <div class="additional-buttons-cal">
             <button class="home-button">Calibrate Printer</button>
         </div>
+
     </div>
+
+
+    <!-- Position Information Section -->
+    <div class="position-info">
+        <div class="separator"></div> <!-- Separator line -->
+        <h2>Position Information</h2>
+        <div class="position-row">
+            <div class="position-column">
+                <span class="position-label">X  :</span>
+                <span class="position-value" id="X">0</span> <!-- Placeholder for G-Code Position -->
+            </div>
+            <div class="position-column">
+                <span class="position-label">Y  :</span>
+                <span class="position-value" id="Y">0</span> <!-- Placeholder for Homing Origin -->
+            </div>
+            <div class="position-column">
+                <span class="position-label">Z  :</span>
+                <span class="position-value" id="Z">0</span> <!-- Placeholder for Current Position -->
+            </div>
+        </div>
+    </div>
+
+    <div class="fan-control">
+        <input type="range" min="0" max="100" value="0" class="slider" id="fan-speed">
+        <span id="fan-speed-value">0%</span>
+        <button id="set-fan-speed">Set Fan Speed</button>
+    </div>
+
+
 
     <!----------------------------------- Camera Section ----------------------------------->
     <div class="camera">

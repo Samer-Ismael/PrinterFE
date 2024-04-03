@@ -476,3 +476,50 @@ button.active {
 .instruction-text {
     margin-bottom: 10px;
 }
+
+/* ---------------------- Position Information ---------------------- */
+/* Position Information */
+.position-info {
+    margin-top: 50px; /* Increased margin from the text above */
+    text-align: center;
+}
+
+.position-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.position-column {
+    flex: 1;
+}
+
+.position-label {
+    font-weight: bold;
+    font-size: 25px; /* Increased font size */
+}
+
+.position-value {
+    margin-left: 2px; /* Increased margin between label and value */
+    font-size: 25px; /* Increased font size */
+}
+
+/* ---------------------- Fan Control Styles ---------------------- */
+/* Adjust the fan-control container */
+.fan-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right */
+    margin-top: 20px;
+}
+
+/* Style for the slider */
+input[type="range"] {
+    width: calc(100% - 80px); /* Adjust width to leave space for the button */
+    margin-right: 10px; /* Add some space between the slider and the button */
+}
+
+/* Style for the "Set" button */
+#set-fan-speed {
+    padding: 5px 10px; /* Adjust padding to make the button smaller */
+}
+
