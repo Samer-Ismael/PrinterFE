@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function sendUpdatesToDisplayResponse() {
     // HTTP request to fetch the system info
-    fetch('http://192.168.0.71:7125/machine/system_info')
+    fetch(FLUIDD_SERVER_URL + '/machine/system_info')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
