@@ -1,5 +1,9 @@
 const updateInterval = 1000;
 
+let xPosition = 0;
+let yPosition = 0;
+let zPosition = 0;
+
 function fetchSystemInfo() {
     return fetch(FLUIDD_SERVER_URL + '/machine/system_info')
         .then(response => {
@@ -137,9 +141,9 @@ function fetchPrinterObjectStatus() {
             const toolheadPosition = status.toolhead.position;
 
             // Extract X, Y, and Z values from the position array
-            const xPosition = toolheadPosition[0];
-            const yPosition = toolheadPosition[1];
-            const zPosition = toolheadPosition[2];
+            xPosition = toolheadPosition[0];
+            yPosition = toolheadPosition[1];
+            zPosition = toolheadPosition[2];
 
             // Update the UI with the extracted position values
             document.getElementById('X').textContent = xPosition;

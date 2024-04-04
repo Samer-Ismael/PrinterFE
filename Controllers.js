@@ -12,46 +12,56 @@ document.addEventListener("DOMContentLoaded", function () {
     const additionalButtons = {
         upZ: document.querySelectorAll(".additional-buttons .arrow-button.upZ"),
         downZ: document.querySelectorAll(".additional-buttons .arrow-button.downZ"),
-        home: document.querySelectorAll(".additional-buttons .home-button")
+        home1: document.querySelectorAll(".additional-buttons .home-button1")
     };
 
     // Function for regular buttons
     function attachRegularButtonListeners(buttons) {
         buttons.upX.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 Y5 F7800");
-                sendGCodeCommand("G90");
+
+                const place = yPosition + 5;
+                const toSend = "G1 Y" + place + " F7800";
+                sendGCodeCommand(toSend);
+
             });
         });
 
         buttons.downX.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 Y-5 F7800");
-                sendGCodeCommand("G90");
+
+                const place = yPosition - 5;
+                const toSend = "G1 Y" + place + " F7800";
+                sendGCodeCommand(toSend);
+
             });
         });
 
         buttons.left.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 X-5 F7800");
-                sendGCodeCommand("G90");
+
+                const place = xPosition - 5;
+                const toSend = "G1 X" + place + " F7800";
+                sendGCodeCommand(toSend);
+
+
             });
         });
 
         buttons.right.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 X5 F7800");
-                sendGCodeCommand("G90");
+
+                const place = xPosition + 5;
+                const toSend = "G1 X" + place + " F7800";
+                sendGCodeCommand(toSend);
+
+
             });
         });
 
         buttons.home.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G28");
+                homePrinter();
             });
         });
     }
@@ -60,23 +70,28 @@ document.addEventListener("DOMContentLoaded", function () {
     function attachAdditionalButtonListeners(buttons) {
         buttons.upZ.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 Z5 F600");
-                sendGCodeCommand("G90");
+
+                const place = zPosition + 5;
+                const toSend = "G1 Z" + place + " F600";
+                sendGCodeCommand(toSend);
+
             });
         });
 
         buttons.downZ.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G91");
-                sendGCodeCommand("G1 Z-5 F600");
-                sendGCodeCommand("G90");
+
+                const place = zPosition - 5;
+                const toSend = "G1 Z" + place + " F600";
+                sendGCodeCommand(toSend);
+
+
             });
         });
 
-        buttons['home'].forEach(function (button) {
+        buttons.home1.forEach(function (button) {
             button.addEventListener("click", function () {
-                sendGCodeCommand("G28");
+                homePrinter();
             });
         });
     }
@@ -91,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     try {
-        const calibrateHomeButtons = document.querySelectorAll(".additional-buttons-cal .home-button");
+        const calibrateHomeButtons = document.querySelectorAll(".additional-buttons-cal .home-button-cal");
 
         calibrateHomeButtons.forEach(function (button) {
             button.addEventListener("click", function () {
