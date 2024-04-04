@@ -302,8 +302,10 @@ button.active {
 
 .controller {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between; /* Places the three divs horizontally */
     align-items: center;
+    text-align: center;
+    margin-bottom: 10px; /* Add margin at the bottom for spacing */
 }
 
 .separator {
@@ -314,8 +316,7 @@ button.active {
 }
 
 .controller h2 {
-    text-align: center;
-    margin: 0 auto;
+    margin: 0; /* Reset margin */
     margin-top: 20px;
 }
 
@@ -329,6 +330,10 @@ button.active {
 
 .controller-buttons > div {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px; /* Adjust margin between buttons */
+
 }
 
 /* ---------------------- Button Styles ---------------------- */
@@ -346,10 +351,7 @@ button.active {
     background-color: #4b2b0c;
     color: #fff;
     transition: background-color 0.3s ease;
-    width: auto; /* Adjust width automatically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 45%;
 }
 
 .arrow-button:hover,
@@ -357,23 +359,7 @@ button.active {
 .additional-buttons > button:hover,
 .additional-buttons-cal > .home-button:hover {
     background-color: #d29258;
-}
 
-/* ---------------------- Additional Buttons Styles ---------------------- */
-
-.additional-buttons {
-    display: flex;
-    flex-direction: row; /* Align buttons horizontally */
-    align-items: flex-end; /* Align buttons to the bottom */
-}
-
-.additional-buttons > button {
-    width: 70px; /* Default width for buttons */
-}
-
-.additional-buttons-cal > .home-button {
-    width: 230px;
-    height: 40px;
 }
 
 /* ---------------------- Button Styles ---------------------- */
