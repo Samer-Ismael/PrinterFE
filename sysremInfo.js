@@ -162,3 +162,24 @@ function fetchPrinterObjectStatusPeriodically() {
 
 // Call the function to start fetching printer object status periodically
 fetchPrinterObjectStatusPeriodically();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Fetch camera URL from the endpoint
+    fetch(  FLUIDD_SERVER_URL + "/server/webcams/list")
+        .then(response => response.json())
+        .then(data => {
+            // Extract the stream URL from the response
+            const streamUrl = data.result.webcams[0].stream_url;
+
+            // Set the stream URL in the iframe source
+            const iframe = document.getElementById("camera-stream");
+            iframe.src = FLUIDD_SERVER_URL + streamUrl;
+
+            // Store the stream URL in local storage
+            localStorage.setItem("cameraUrl", streamUrl);
+        })
+        .catch(error => {
+            console.error("Error fetching camera URL:", error);
+        });
+});

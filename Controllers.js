@@ -102,3 +102,18 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error attaching event listeners:", error);
     }
 });
+
+function setFanSpeed() {
+    // Get the value from the slider
+    const fanSpeed = document.getElementById("fan-speed").value;
+
+    // Send the G-code command to set the fan speed
+    const gCodeCommand = "M106 S" + fanSpeed;
+    sendGcodeCommand(gCodeCommand);
+}
+
+// Attach click event listener to the "Set Fan Speed" button
+const setFanSpeedButton = document.getElementById("set-fan-speed");
+setFanSpeedButton.addEventListener("click", setFanSpeed);
+
+
