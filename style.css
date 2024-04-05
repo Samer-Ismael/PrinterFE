@@ -7,9 +7,22 @@ body {
     padding: 0;
     color: #e1a56c;
     caret-color: transparent;
-
+    overflow-x: hidden;
+    background-image: url('PowerPoint/istockphoto-1365099119-640x640.jpg'); /* Image of stars or galaxies */
+    background-blend-mode: overlay; /* Blend mode to make the background dimmer */
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: moveStars 100s linear infinite;
 }
 
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0; /* Start position of background image */
+    }
+    to {
+        background-position: -2000px -2000px; /* End position of background image (adjust based on image size) */
+    }
+}
 /* ---------------------- Container Styles ---------------------- */
 
 .container {
@@ -536,16 +549,11 @@ input[type="range"] {
     justify-content: center; /* Center align items horizontally */
 }
 .social-icons li {
-    margin-right: 10px;
+    margin: 20px;
 }
-/* Set white background for icons */
-.social-icons a {
-    background-color: #151515;
-    padding: 15px; /* Adjust padding as needed */
-    border-radius: 50%;
-}
+
 /* Make icons bigger */
 .social-icons i {
-    font-size: 24px; /* Adjust font size as needed */
+    font-size: 30px; /* Adjust font size as needed */
     color: #ffffff; /* Set icon color to black */
 }
