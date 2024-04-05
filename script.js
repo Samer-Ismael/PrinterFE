@@ -189,7 +189,21 @@ function displayResponse(command, responseData) {
     responseElement.innerText += message + '\n';
     responseElement.scrollTop = responseElement.scrollHeight;
 
+    // Save the message to local storage
+    const savedMessages = localStorage.getItem('savedMessages') || '';
+    const updatedMessages = savedMessages + message + '\n';
+    localStorage.setItem('savedMessages', updatedMessages);
 }
+
+// Call displayResponse function when the page loads to display saved messages
+window.onload = function() {
+    const savedMessages = localStorage.getItem('savedMessages');
+    const responseElement = document.getElementById('response');
+    if (savedMessages) {
+        responseElement.innerText = savedMessages;
+        responseElement.scrollTop = responseElement.scrollHeight;
+    }
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch temperatures when the page loads
