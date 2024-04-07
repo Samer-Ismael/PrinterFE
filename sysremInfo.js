@@ -208,6 +208,7 @@ function fetchPrinterObjectStatusPeriodically() {
 fetchPrinterObjectStatusPeriodically();
 
 
+// Fetching the camera information and displaying the stream
 document.addEventListener("DOMContentLoaded", function() {
     // Get the USER_TOKEN from localStorage or any other source
     const USER_TOKEN = localStorage.getItem("USER_TOKEN");

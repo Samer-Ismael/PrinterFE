@@ -54,28 +54,23 @@ function setNewHeaterBedTemp() {
     // Clear the input field after setting the temperature
     newTempInput.value = '';
 }
-
 function getTemperatures(includeMonitors) {
     const TEMPERATURE_STORE_ENDPOINT = "/server/temperature_store";
+
     const url = FLUIDD_SERVER_URL + TEMPERATURE_STORE_ENDPOINT;
-    const params = {include_monitors: includeMonitors};
+    const params = { include_monitors: includeMonitors };
 
-    // Request options
-    const options = {
+    // Add the authorization header with the USER_TOKEN
+    const headers = new Headers({
+        'Authorization': 'Bearer ' + USER_TOKEN
+    });
+
+    fetch(url, {
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
-        }
-    };
-
-    fetch(url + '?' + new URLSearchParams(params), options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        params: params,
+        headers: headers
+    })
+        .then(response => response.json())
         .then(data => {
             const recentTemperatures = {};
             for (const sensorName in data.result) {
