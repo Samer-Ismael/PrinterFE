@@ -5,6 +5,10 @@ function homePrinter() {
     sendGCodeCommand('G28');
 }
 
+function firmwareRestart() {
+    sendGCodeCommand('FIRMWARE_RESTART');
+}
+
 function emergencyStop() {
     sendGCodeCommand('M112');
 }
