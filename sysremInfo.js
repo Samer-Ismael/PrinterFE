@@ -5,7 +5,15 @@ let yPosition = 0;
 let zPosition = 0;
 
 function fetchSystemInfo() {
-    return fetch(FLUIDD_SERVER_URL + '/machine/system_info')
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        }
+    };
+
+    return fetch(FLUIDD_SERVER_URL + '/machine/system_info', options)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -21,8 +29,17 @@ function fetchSystemInfo() {
         });
 }
 
+
 function fetchSystemStats() {
-    return fetch(FLUIDD_SERVER_URL + '/machine/proc_stats')
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        }
+    };
+
+    return fetch(FLUIDD_SERVER_URL + '/machine/proc_stats', options)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -37,6 +54,7 @@ function fetchSystemStats() {
             throw error; // Rethrow the error for handling
         });
 }
+
 
 function updateDOM() {
     fetchSystemInfo()
@@ -89,8 +107,15 @@ setInterval(updateDOM, updateInterval);
 // Function to fetch printer information
 function fetchPrinterInfo() {
     const url = FLUIDD_SERVER_URL + '/printer/info';
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        }
+    };
 
-    fetch(url)
+    fetch(url, options)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -129,9 +154,23 @@ function fetchPrinterObjectStatus() {
     // Endpoint URL
     const endpoint = FLUIDD_SERVER_URL + '/printer/objects/query?gcode_move&toolhead&extruder=target,temperature';
 
+    // Request options
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        }
+    };
+
     // Fetch data from the endpoint
-    fetch(endpoint)
-        .then(response => response.json())
+    fetch(endpoint, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             // Process the response data
             const result = data.result;
@@ -155,6 +194,7 @@ function fetchPrinterObjectStatus() {
         });
 }
 
+
 // Function to fetch printer object status every 1 second
 function fetchPrinterObjectStatusPeriodically() {
     // Initial fetch
@@ -169,9 +209,29 @@ fetchPrinterObjectStatusPeriodically();
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Get the USER_TOKEN from localStorage or any other source
+    const USER_TOKEN = localStorage.getItem("USER_TOKEN");
+
+    // Request options
+    const options = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    // Check if USER_TOKEN exists and add it to the Authorization header
+    if (USER_TOKEN) {
+        options.headers['Authorization'] = 'Bearer ' + USER_TOKEN;
+    }
+
     // Fetch camera URL from the endpoint
-    fetch(  FLUIDD_SERVER_URL + "/server/webcams/list")
-        .then(response => response.json())
+    fetch(FLUIDD_SERVER_URL + "/server/webcams/list", options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             // Extract the stream URL from the response
             const streamUrl = data.result.webcams[0].stream_url;

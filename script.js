@@ -57,12 +57,25 @@ function setNewHeaterBedTemp() {
 
 function getTemperatures(includeMonitors) {
     const TEMPERATURE_STORE_ENDPOINT = "/server/temperature_store";
-
     const url = FLUIDD_SERVER_URL + TEMPERATURE_STORE_ENDPOINT;
     const params = {include_monitors: includeMonitors};
 
-    fetch(url, {method: 'GET', params: params})
-        .then(response => response.json())
+    // Request options
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        }
+    };
+
+    fetch(url + '?' + new URLSearchParams(params), options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const recentTemperatures = {};
             for (const sensorName in data.result) {
@@ -84,6 +97,7 @@ function getTemperatures(includeMonitors) {
         })
         .catch(error => console.error('Error:', error));
 }
+
 
 
 // -------------------------------------------------------------------------------------------------------------------
@@ -109,20 +123,27 @@ function sendGCodeCommand(gCodeCommand) {
         document.getElementById('response').innerText = '';
         document.getElementById('command').value = '';
 
-
     } else {
 
-        displayResponse('Working...', "........")
-        fetch(url)
+        displayResponse('Working...', "........");
+
+        // Request options
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+            }
+        };
+
+        fetch(url, options)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-
                 return response.text();
             })
             .then(responseBody => {
-
                 const responseElement = JSON.parse(responseBody);
                 displayResponse(gCodeCommand, responseElement.result);
             })
@@ -131,6 +152,7 @@ function sendGCodeCommand(gCodeCommand) {
             });
     }
 }
+
 
 document.getElementById('command').addEventListener('keydown', function (event) {
     // Check if the key pressed is Enter (key code 13)
@@ -192,11 +214,18 @@ function uploadFile(file) {
     formData.append('file', file);
     formData.append('root', 'gcodes'); // Specify the root location for uploading
 
-    displayResponse('Uploading file', file.name)
+    displayResponse('Uploading file', file.name);
 
-    fetch(url, {
-        method: 'POST', body: formData
-    })
+    // Request options
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        },
+        body: formData
+    };
+
+    fetch(url, options)
         .then(response => response.json())
         .then(data => {
             console.log('File uploaded:', data);
@@ -209,17 +238,24 @@ function uploadFile(file) {
         });
 }
 
+
 function printFile(fileName) {
     const url = FLUIDD_SERVER_URL + '/printer/print/start';
     const data = {
         filename: fileName
     };
 
-    fetch(url, {
-        method: 'POST', body: JSON.stringify(data), headers: {
-            'Content-Type': 'application/json'
+    // Request options
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
-    })
+    };
+
+    fetch(url, options)
         .then(response => response.json())
         .then(data => {
             console.log('Print response:', data);
@@ -231,14 +267,21 @@ function printFile(fileName) {
         });
 }
 
+
 function cancelPrint() {
     const url = FLUIDD_SERVER_URL + '/printer/print/cancel';
 
-    fetch(url, {
-        method: 'POST', body: JSON.stringify({}), headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    // Request options
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+        },
+        body: JSON.stringify({}) // If no data is needed in the body, you can still include an empty object
+    };
+
+    fetch(url, options)
         .then(response => response.json())
         .then(data => {
             console.log('Cancel print response:', data);
@@ -249,6 +292,7 @@ function cancelPrint() {
             alert('Error canceling print. Please try again.');
         });
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const uploadButton = document.querySelector('.upload-button');

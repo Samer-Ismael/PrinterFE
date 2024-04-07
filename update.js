@@ -8,7 +8,8 @@ function updateKlipper() {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN
         },
         body: JSON.stringify(requestData)
     };
@@ -43,7 +44,8 @@ function updateSystem() {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN
         },
         body: JSON.stringify(requestData)
     };
@@ -78,7 +80,8 @@ function updateMoonraker() {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN
         },
         body: JSON.stringify(requestData)
     };
