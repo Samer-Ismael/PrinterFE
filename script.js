@@ -1,33 +1,4 @@
-let FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || "";
 
-// -------------------------------------------------------------------------------------------------------------------
-// Modal for setting the server URL (IP address or hostname)
-var modal = document.getElementById("myModal");
-
-function openModal() {
-    modal.style.display = "block";
-}
-
-function closeModal() {
-    modal.style.display = "none";
-}
-
-function saveServerUrl() {
-    FLUIDD_SERVER_URL = document.getElementById("serverUrlInput").value;
-    localStorage.setItem("FLUIDD_SERVER_URL", FLUIDD_SERVER_URL); // Save URL to localStorage
-    closeModal(); // Close the modal after saving the URL
-}
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
-
-// Restore saved URL when the page loads
-window.onload = function () {
-    FLUIDD_SERVER_URL = localStorage.getItem("FLUIDD_SERVER_URL") || "";
-};
 // -------------------------------------------------------------------------------------------------------------------
 // Sending G-code commands to the server using the console
 function homePrinter() {

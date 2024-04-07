@@ -26,6 +26,11 @@
             <button class="register-button" onclick="updateSystem()">Update System</button>
             <button class="register-button" onclick="updateKlipper()">Update Klipper</button>
             <button class="register-button" onclick="updateMoonraker()">Update Moonraker</button>
+
+            <div class="user-icon" onclick="openLoginModal()">
+                <i class="fas fa-user"></i>
+            </div>
+
             <!-- Separator Line -->
             <div class="separator"></div>
             <!-- Printer Status -->
@@ -33,6 +38,29 @@
             <!-- Printer Name -->
             <p>Name: <span id="printerName">No Printer Connected</span></p>
         </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+                <h2>Login / Register</h2>
+                <!-- Username Input -->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+
+                <!-- Password Input -->
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+
+                <!-- Login Button -->
+                <button onclick="login()">Login</button>
+
+                <!-- Register Button -->
+                <button onclick="register()">Register</button>
+            </div>
+        </div>
+
+
 
         <!-- Additional Information -->
         <div class="additional-info">
@@ -204,6 +232,7 @@
 
 <!----------------------------------- Script Files ----------------------------------->
 <script src="script.js"></script>
+<script src="register.js"></script>
 <script src="Controllers.js"></script>
 <script src="sysremInfo.js"></script>
 <script src="update.js"></script>
