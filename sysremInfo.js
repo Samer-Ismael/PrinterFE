@@ -216,14 +216,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Request options
     const options = {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + USER_TOKEN
         }
     };
 
-    // Check if USER_TOKEN exists and add it to the Authorization header
-    if (USER_TOKEN) {
-        options.headers['Authorization'] = 'Bearer ' + USER_TOKEN;
-    }
 
     // Fetch camera URL from the endpoint
     fetch(FLUIDD_SERVER_URL + "/server/webcams/list", options)
@@ -245,6 +242,6 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem("cameraUrl", streamUrl);
         })
         .catch(error => {
-            console.error("Error fetching camera URL:", error);
+            displayResponse("Error fetching camera URL:", error);
         });
 });
