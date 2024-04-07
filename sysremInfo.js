@@ -213,6 +213,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the USER_TOKEN from localStorage or any other source
     const USER_TOKEN = localStorage.getItem("USER_TOKEN");
 
+    // The Token is required to access the camera stream ONLY when using the pubplic IP.
+    // If you are using the local IP, you can skip the todken or the camera is not going to work.
     // Request options
     const options = {
         headers: {
@@ -220,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
             'Authorization': 'Bearer ' + USER_TOKEN
         }
     };
-
 
     // Fetch camera URL from the endpoint
     fetch(FLUIDD_SERVER_URL + "/server/webcams/list", options)
@@ -242,6 +243,6 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem("cameraUrl", streamUrl);
         })
         .catch(error => {
-            displayResponse("Error fetching camera URL:", error);
+            console.error("Error fetching camera URL:", error);
         });
 });
