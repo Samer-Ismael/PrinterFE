@@ -114,7 +114,7 @@ button.active {
     background-color: #4d5158;
 }
 
-/* ---------------------- Response Styles ---------------------- */
+/* ---------------------- Response Window Styles ---------------------- */
 
 #response {
     margin-top: 20px;
@@ -160,7 +160,7 @@ button.active {
     margin-left: 10px;
 }
 
-/* ---------------------- Temp Table Styles ---------------------- */
+/* ---------------------- Temperature Table Styles ---------------------- */
 
 .temp-table {
     display: flex;
@@ -187,7 +187,6 @@ button.active {
     margin-bottom: 5px;
 }
 
-/* ---------------------- New Temp Input Styles ---------------------- */
 
 .new-temp-input {
     width: 100%;
@@ -213,27 +212,6 @@ button.active {
     margin-bottom: 5px;
 }
 
-/* ---------------------- Camera Styles ---------------------- */
-
-/* ---------------------- Camera Styles ---------------------- */
-
-.camera {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.camera h2 {
-    text-align: center;
-}
-
-.camera iframe {
-    display: block;
-    margin: 0 auto;
-}
-
-/* ---------------------- Files Container Styles ---------------------- */
-
 .files-container {
     display: flex;
     flex-direction: column;
@@ -241,7 +219,6 @@ button.active {
     margin-top: 20px;
 }
 
-/* ---------------------- Files Styles ---------------------- */
 
 .files {
     display: flex;
@@ -262,6 +239,24 @@ button.active {
     border-radius: 6px;
     width: 120px;
 }
+
+/* ---------------------- Camera Styles ---------------------- */
+
+.camera {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.camera h2 {
+    text-align: center;
+}
+
+.camera iframe {
+    display: block;
+    margin: 0 auto;
+}
+
 
 /* ---------------------- Responsive Styles ---------------------- */
 
@@ -333,8 +328,6 @@ button.active {
     margin-top: 20px;
 }
 
-/* ---------------------- Controller Buttons Styles ---------------------- */
-
 .controller-buttons {
     display: flex;
     flex-direction: column;
@@ -401,8 +394,6 @@ button.active {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ---------------------- Modal Content Styles ---------------------- */
-
 .modal-content {
     background-color: #1d2127;
     margin: 15% auto;
@@ -455,8 +446,8 @@ button.active {
 
 .basic-info p,
 .additional-info p {
-    flex: 0 0 50%; /* Set width to 50% for two columns */
-    margin-bottom: 5px; /* Add some margin between paragraphs */
+    flex: 0 0 50%;
+    margin-bottom: 5px;
 }
 
 /* ---------------------- Common Styles ---------------------- */
@@ -474,9 +465,9 @@ button.active {
 }
 
 /* ---------------------- Position Information ---------------------- */
-/* Position Information */
+
 .position-info {
-    margin-top: 50px; /* Increased margin from the text above */
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -491,57 +482,55 @@ button.active {
 
 .position-label {
     font-weight: bold;
-    font-size: 25px; /* Increased font size */
+    font-size: 25px;
 }
 
 .position-value {
-    margin-left: 2px; /* Increased margin between label and value */
-    font-size: 25px; /* Increased font size */
+    margin-left: 2px;
+    font-size: 25px;
 }
 
 /* ---------------------- Fan Control Styles ---------------------- */
-/* Adjust the fan-control container */
+
 .fan-control {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Align items to the right */
+    justify-content: flex-end;
     margin-top: 20px;
 }
 
-/* Style for the slider */
+/* ---------------------- Slider Styles ---------------------- */
 input[type="range"] {
-    width: calc(100% - 80px); /* Adjust width to leave space for the button */
-    margin-right: 10px; /* Add some space between the slider and the button */
+    width: calc(100% - 80px);
+    margin-right: 10px;
 }
 
-/* Style for the "Set" button */
 #set-fan-speed {
-    padding: 5px 10px; /* Adjust padding to make the button smaller */
+    padding: 5px 10px;
 }
 
 /* ---------------------- Social Icons Styles ---------------------- */
-/* Optional: Custom styles for your icons */
+
 .social-icons {
     list-style: none;
     padding: 0;
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center align items horizontally */
+    display: flex;
+    justify-content: center;
 }
 .social-icons li {
     margin: 20px;
 }
 
-/* Make icons bigger */
+
 .social-icons i {
-    font-size: 30px; /* Adjust font size as needed */
-    color: #ffffff; /* Set icon color to black */
+    font-size: 30px;
+    color: #ffffff;
 }
 
-/* Printer Controls Style */
 .printer-controls {
     position: relative;
-    display: flex; /* Use flexbox for easier alignment */
-    align-items: center; /* Align items vertically */
+    display: flex;
+    align-items: center;
 }
 
 
