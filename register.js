@@ -47,10 +47,11 @@ function register() {
             return response.json();
         })
         .then(data => {
-            USER_TOKEN = data.result.token; // Assuming token is in data.result
+            USER_TOKEN = data.result.token;
             localStorage.setItem("USER_TOKEN", USER_TOKEN);
 
-            displayResponse(data.result.action); // Assuming action is in data.result
+            displayResponse("Status: " , data.result.action);
+            displayResponse("Token: " , USER_TOKEN);
         })
         .catch(error => {
             // Handle error

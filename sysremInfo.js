@@ -97,7 +97,7 @@ function updateDOM() {
             document.getElementById('systemMemoryUsed').innerText = `${memoryUsedMB} MB`;
         })
         .catch(error => {
-            console.error('Error fetching system stats:', error);
+            //console.error('Error fetching system stats:', error);
         });
 }
 
