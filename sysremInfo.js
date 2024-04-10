@@ -12,6 +12,7 @@ function fetchSystemInfo() {
             'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
     };
+    options.mode = 'cors';
 
     return fetch(FLUIDD_SERVER_URL + '/machine/system_info', options)
         .then(response => {
@@ -38,6 +39,7 @@ function fetchSystemStats() {
             'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
     };
+    options.mode = 'cors';
 
     return fetch(FLUIDD_SERVER_URL + '/machine/proc_stats', options)
         .then(response => {
@@ -114,6 +116,7 @@ function fetchPrinterInfo() {
             'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
     };
+    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => {
@@ -162,6 +165,8 @@ function fetchPrinterObjectStatus() {
             'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
     };
+
+    options.mode = 'cors';
 
     // Fetch data from the endpoint
     fetch(endpoint, options)
@@ -222,6 +227,8 @@ document.addEventListener("DOMContentLoaded", function() {
             'Authorization': 'Bearer ' + USER_TOKEN
         }
     };
+
+    options.mode = 'cors';
 
     // Fetch camera URL from the endpoint
     fetch(FLUIDD_SERVER_URL + "/server/webcams/list", options)

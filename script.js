@@ -66,7 +66,9 @@ function getTemperatures(includeMonitors) {
 
     // Add the authorization header with the USER_TOKEN
     const headers = new Headers({
-        'Authorization': 'Bearer ' + USER_TOKEN
+        'Authorization': 'Bearer ' + USER_TOKEN,
+        'Content-Type': 'application/json', // Add Content-Type header
+        'Access-Control-Allow-Origin': '*' // Allow requests from any origin
     });
 
     fetch(url, {
@@ -134,6 +136,7 @@ function sendGCodeCommand(gCodeCommand) {
                 'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
             }
         };
+        options.mode = 'cors';
 
         fetch(url, options)
             .then(response => {
@@ -223,6 +226,7 @@ function uploadFile(file) {
         },
         body: formData
     };
+    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())
@@ -253,6 +257,7 @@ function printFile(fileName) {
             'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
         }
     };
+    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())
@@ -279,6 +284,7 @@ function cancelPrint() {
         },
         body: JSON.stringify({}) // If no data is needed in the body, you can still include an empty object
     };
+    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())
