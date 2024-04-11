@@ -67,8 +67,6 @@ function getTemperatures(includeMonitors) {
     // Add the authorization header with the USER_TOKEN
     const headers = new Headers({
         'Authorization': 'Bearer ' + USER_TOKEN,
-        'Content-Type': 'application/json', // Add Content-Type header
-        'Access-Control-Allow-Origin': '*' // Allow requests from any origin
     });
 
     fetch(url, {
