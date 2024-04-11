@@ -13,7 +13,6 @@ function updateKlipper() {
         },
         body: JSON.stringify(requestData)
     };
-    options.mode = 'cors';
 
     fetch(FLUIDD_SERVER_URL + '/machine/update/klipper', options)
         .then(response => {
@@ -50,7 +49,6 @@ function updateSystem() {
         },
         body: JSON.stringify(requestData)
     };
-    options.mode = 'cors';
 
     fetch(FLUIDD_SERVER_URL + '/machine/update/system', options)
         .then(response => {
@@ -87,7 +85,6 @@ function updateMoonraker() {
         },
         body: JSON.stringify(requestData)
     };
-    options.mode = 'cors';
 
     fetch(FLUIDD_SERVER_URL + '/machine/update/moonraker', options)
         .then(response => {

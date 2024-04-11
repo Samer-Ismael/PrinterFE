@@ -226,7 +226,6 @@ function uploadFile(file) {
         },
         body: formData
     };
-    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())
@@ -254,10 +253,9 @@ function printFile(fileName) {
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + USER_TOKEN // Add the USER_TOKEN to the Authorization header
+            'Authorization': 'Bearer ' + USER_TOKEN
         }
     };
-    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())
@@ -284,7 +282,6 @@ function cancelPrint() {
         },
         body: JSON.stringify({}) // If no data is needed in the body, you can still include an empty object
     };
-    options.mode = 'cors';
 
     fetch(url, options)
         .then(response => response.json())

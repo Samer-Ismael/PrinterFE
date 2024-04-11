@@ -36,8 +36,7 @@ function register() {
     fetch(FLUIDD_SERVER_URL + '/access/user', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(requestBody)
     })
@@ -74,8 +73,7 @@ function login() {
     fetch(FLUIDD_SERVER_URL + '/access/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(requestBody)
     })
