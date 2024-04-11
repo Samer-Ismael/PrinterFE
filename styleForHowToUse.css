@@ -1,0 +1,61 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+    margin: 0;
+    padding: 0;
+    color: #e1a56c;
+    caret-color: transparent;
+    overflow-x: hidden;
+    background-image: url('PowerPoint/istockphoto-1365099119-640x640.jpg');
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -2000px -2000px;
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #d29258;
+}
+
+h2 {
+    font-size: 30px;
+    color: #d29258;
+}
+
+
+p {
+    color: #e1a56c;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+a {
+    color: #d29258;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}

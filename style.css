@@ -114,6 +114,23 @@ button.active {
     background-color: #4d5158;
 }
 
+p {
+    color: #e1a56c;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+a {
+    color: #d29258;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* ---------------------- Response Window Styles ---------------------- */
 
 #response {
