@@ -1,0 +1,242 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #151515;
+    margin: 0;
+    padding: 0;
+    color: #e1a56c;
+    caret-color: transparent;
+    overflow-x: hidden;
+    background-image: url('PowerPoint/istockphoto-1365099119-640x640.jpg'); /* Image of stars or galaxies */
+    background-blend-mode: overlay; /* Blend mode to make the background dimmer */
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0; /* Start position of background image */
+    }
+    to {
+        background-position: -2000px -2000px; /* End position of background image (adjust based on image size) */
+    }
+}
+
+/* ---------------------- Container Styles ---------------------- */
+
+.container {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    min-height: 95vh; /* Set minimum container height to 80% of viewport height */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    position: relative; /* Positioning context for absolute positioning */
+}
+
+/* ---------------------- Title Styles ---------------------- */
+
+.title-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 36px;
+    color: #d29258;
+    text-shadow: 0 0 10px #d29258;
+    animation: glowAnimation 1.5s ease-in-out infinite alternate, floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes glowAnimation {
+    0% {
+        text-shadow: 0 0 10px #361c1c;
+    }
+    50% {
+        text-shadow: 0 0 20px #876341;
+    }
+    100% {
+        text-shadow: 0 0 10px #d29258;
+    }
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* ---------------------- Heading Styles ---------------------- */
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* ---------------------- Button Styles ---------------------- */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    background-color: #4b2b0c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 180px;
+}
+
+button:active {
+    background-color: #4d5158;
+}
+
+button:hover {
+    background-color: #d29258;
+}
+
+button.active {
+    background-color: #4d5158;
+}
+
+p {
+    color: #e1a56c;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+a {
+    color: #d29258;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------- Input Styles ---------------------- */
+
+#chat-form {
+    position: absolute;
+    bottom: 20px; /* Adjusted bottom position */
+    left: 0;
+    width: calc(100% - 40px); /* Adjusted width */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.message {
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    position: relative;
+    padding-bottom: 50px; /* Adjust as needed to leave space for the input form */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input-text {
+    flex: 1;  /* Expands the input field to fill available space */
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 30px;
+    box-sizing: border-box;
+}
+
+.input-text::placeholder {
+    color: #343a40;
+}
+
+.submit-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #361c1c;
+    color: #e0e0e0;
+}
+
+/* Optional: Adjust styling for hover and focus states */
+
+.submit-button:hover {
+    background-color: #2980b9;
+}
+
+.submit-button:focus {
+    outline: 2px solid #3498db;
+}
+
+
+
+.message-container {
+    margin-bottom: 60px; /* Adjust to leave space for the input form */
+}
+
+/* Optional: Adjust message container height for scrolling */
+.message-container {
+    max-height: calc(100vh - 120px); /* Adjust 120px to leave space for the input form and padding */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+
+.user-message {
+    background-color: #5c2e2e; /* Light blue */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bot-message {
+    background-color: #343a42; /* Light gray */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
