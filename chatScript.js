@@ -50,47 +50,45 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function displayMessage(message, isUser) {
         const messageContainer = document.createElement("div");
-        if (isUser) {
-            messageContainer.classList.add("user-message");
-        } else {
-            messageContainer.classList.add("bot-message");
-        }
+        messageContainer.classList.add(isUser ? "user-message" : "bot-message");
 
         // Regular expression to match Markdown code blocks
         const codeBlockRegex = /```[\s\S]+?```/g;
         let lastIndex = 0;
         let match;
 
+        // Function to add text node to message container
+        const addTextNode = (text) => {
+            if (text) {
+                messageContainer.appendChild(document.createTextNode(text));
+            }
+        };
+
         // Iterate over each Markdown code block in the message
         while ((match = codeBlockRegex.exec(message)) !== null) {
             // Add text before the code block as a text node
-            const textBeforeBlock = message.substring(lastIndex, match.index);
-            if (textBeforeBlock) {
-                messageContainer.appendChild(document.createTextNode(textBeforeBlock));
-            }
+            addTextNode(message.substring(lastIndex, match.index));
             lastIndex = codeBlockRegex.lastIndex;
-
-            // Add separator before code block
-            messageContainer.appendChild(document.createTextNode("--------\n"));
 
             // Create a <code> element for the code block
             const codeBlock = document.createElement("code");
             codeBlock.innerText = match[0].replace(/^```|```$/g, ""); // Remove leading and trailing ```
             messageContainer.appendChild(codeBlock);
 
-            // Add separator after code block
-            messageContainer.appendChild(document.createTextNode("\n--------\n"));
         }
 
         // Add remaining text after the last code block, if any
-        const textAfterLastBlock = message.substring(lastIndex);
-        if (textAfterLastBlock) {
-            messageContainer.appendChild(document.createTextNode(textAfterLastBlock));
-        }
+        addTextNode(message.substring(lastIndex));
 
         // Append the message container to the chat container
-        document.querySelector(".container").appendChild(messageContainer);
+        const chatContainer = document.querySelector(".container");
+        if (chatContainer) {
+            chatContainer.appendChild(messageContainer);
+        } else {
+            console.error("Chat container not found.");
+        }
     }
+
 
 
 
