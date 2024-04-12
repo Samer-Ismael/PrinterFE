@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         displayMessage("Smokey: Please wait...", false); // Pass false for bot message
 
         // Send HTTP POST request
-        const url = "https://smokeyai.samerchat.se/send-request";
+        const url = "https://smokeyai.samerchat.se/generate";
         const data = { prompt: message }; // Sending the user message as 'prompt'
         fetch(url, {
             method: "POST",
@@ -29,8 +29,14 @@ document.addEventListener("DOMContentLoaded", function() {
         })
             .then(response => response.json())
             .then(data => {
-                // Display bot response
-                displayMessage("Smokey:   " + data.response, false); // Pass false for bot message
+                // Check if the response contains the 'generated_response' field
+                if ('generated_response' in data) {
+                    // Display bot response
+                    displayMessage("Smokey:   " + data.generated_response, false); // Pass false for bot message
+                } else {
+                    console.error("Error: Response does not contain 'generated_response'");
+                    displayMessage("Bot: Sorry, an error occurred while processing your request.", false); // Pass false for bot message
+                }
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -40,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Clear user input
         userInput.value = "";
     }
+
 
     function displayMessage(message, isUser) {
         const messageContainer = document.createElement("div");
