@@ -139,19 +139,27 @@ h1 {
 }
 
 
-/* Media query for screens smaller than 768px */
 @media only screen and (max-width: 768px) {
-    .container {
-        /* Adjust container width or margins for smaller screens */
+    .chat-wrapper {
+        flex-direction: column; /* Maintain vertical stacking */
     }
 
     .message-container,
     .input-container {
-        /* Adjust width or margins for message and input sections on small screens */
+        margin-bottom: 0.5rem; /* Reduce margin on smaller screens */
     }
 
     #user-input,
     .submit-button {
-        /* Adjust font size or width of input field and submit button */
+        font-size: 0.8rem; /* Adjust font size for smaller screens */
+    }
+}
+
+/* Additional media query for even smaller screens (optional) */
+
+@media only screen and (max-width: 480px) {
+    #user-input,
+    .submit-button {
+        font-size: 0.7rem; /* Further reduce font size for very small screens */
     }
 }
