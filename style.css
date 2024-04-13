@@ -277,43 +277,114 @@ a:hover {
 
 /* ---------------------- Responsive Styles ---------------------- */
 
-@media screen and (max-width: 650px) {
+/* Media queries for responsive design */
+
+@media only screen and (max-width: 768px) {
+    /* Styles for screens smaller than 768px */
+
     .container {
-        max-width: 100%;
-        margin: 20px auto;
-        padding: 10px;
+        flex-direction: column; /* Stack elements vertically on small screens */
     }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
+    .title-container,
+    .printer-info,
+    .buttons,
+    .commandForm,
+    .response,
+    .temps,
+    .files-container,
+    .controller,
+    .camera,
+    .position-info,
+    .fan-control,
+    .social-icons {
+        width: 100%; /* Make sections full width on small screens */
     }
 
-    .temps {
-        margin-top: 10px;
+    .title {
+        font-size: 1.5rem; /* Adjust title size for smaller screens */
     }
 
-    .temp-row {
+    .additional-info,
+    .temp-row,
+    .controller-buttons,
+    .position-row {
+        display: flex;
+        flex-direction: column; /* Stack elements within sections vertically on small screens */
+        align-items: center; /* Center elements horizontally */
+    }
+
+    .basic-info {
+        display: flex; /* Make buttons and content flex side-by-side */
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
+        justify-content: space-between; /* Distribute buttons evenly */
+        margin-bottom: 1rem; /* Add some bottom margin */
+    }
+
+    .basic-info button {
+        flex: 1; /* Make buttons take up equal space */
+        margin: 0.5rem; /* Add some margin between buttons */
+    }
+
+    .user-icon {
+        display: flex;
+        align-items: center; /* Center user icon vertically */
+    }
+
+    .basic-info p {
+        margin: 0.5rem 0; /* Add some margin between status and name */
+        /* Optional: Adjust font size for smaller screens if needed */
+        font-size: 0.8rem; /* Example: Reduce font size slightly */
+    }
+
+    .controller {
+        display: flex; /* Make controller elements flex side-by-side */
+        flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+        justify-content: space-between; /* Distribute elements evenly */
+    }
+
+    .temp-column,
+    .position-column,
+    .controller-buttons div,
+    .additional-buttons,
+    .additional-buttons-cal {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center; /* Center elements horizontally */
+        margin-bottom: 1rem; /* Add some margin between sections */
+    }
+
+    .controller-buttons div,
+    .additional-buttons button {
+        margin: 0.5rem 0; /* Add some margin between elements */
+    }
+
+    .fan-control {
+        display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
-    .temp-column {
-        flex: 1;
-        margin-bottom: 10px;
+    .slider {
+        width: 80%; /* Adjust slider width for smaller screens */
     }
 
-    .new-temp-input {
-        width: 100%;
+    .social-icons li {
+        display: inline-block; /* Display social icons inline on small screens */
+        margin: 0 1rem; /* Add margin between social icons */
+    }
+    .buttons {
+        display: flex; /* Make buttons flex side-by-side */
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
+        justify-content: space-between; /* Distribute buttons evenly */
+        margin-bottom: 1rem; /* Add some bottom margin */
     }
 
-    .files {
-        flex-direction: column;
+    .buttons button {
+        flex: 1; /* Make buttons take up equal space */
+        margin: 0.5rem; /* Add some margin between buttons */
     }
 
-    .file-input-wrapper {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
 }
 
 /* ---------------------- Common Styles ---------------------- */
