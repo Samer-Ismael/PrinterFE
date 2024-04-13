@@ -22,158 +22,45 @@ body {
 }
 
 /* ---------------------- Container Styles ---------------------- */
-
 .container {
     max-width: 800px;
-    margin: 10px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    min-height: 95vh; /* Set minimum container height to 80% of viewport height */
-    overflow-y: auto; /* Add vertical scroll if content overflows */
-    position: relative; /* Positioning context for absolute positioning */
+    min-height: calc(100vh - 150px); /* Adjusted min-height to leave space for input container */
+    overflow-y: auto; /* Allow vertical scrolling */
+    position: relative;
+
 }
 
-/* ---------------------- Title Styles ---------------------- */
-
-.title-container {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.title {
-    font-size: 36px;
-    color: #d29258;
-    text-shadow: 0 0 10px #d29258;
-    animation: glowAnimation 1.5s ease-in-out infinite alternate, floatAnimation 4s ease-in-out infinite;
-}
-
-@keyframes glowAnimation {
-    0% {
-        text-shadow: 0 0 10px #361c1c;
-    }
-    50% {
-        text-shadow: 0 0 20px #876341;
-    }
-    100% {
-        text-shadow: 0 0 10px #d29258;
-    }
-}
-
-@keyframes floatAnimation {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* ---------------------- Heading Styles ---------------------- */
 
 h1 {
     text-align: center;
     font-size: 36px;
-    margin-bottom: 30px;
-}
-
-/* ---------------------- Button Styles ---------------------- */
-
-.buttons {
-    display: flex;
-    justify-content: center;
     margin-bottom: 20px;
-    transition: transform 0.3s ease-in-out;
-}
-
-button {
-    padding: 12px 24px;
-    margin: 0 10px;
-    background-color: #4b2b0c;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: 180px;
-}
-
-button:active {
-    background-color: #4d5158;
-}
-
-button:hover {
-    background-color: #d29258;
-}
-
-button.active {
-    background-color: #4d5158;
-}
-
-p {
-    color: #e1a56c;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-a {
-    color: #d29258;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* ---------------------- Input Styles ---------------------- */
-
-#chat-form {
-    position: absolute;
-    bottom: 20px; /* Adjusted bottom position */
-    left: 0;
-    width: calc(100% - 40px); /* Adjusted width */
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-}
-
-
-
-.message {
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-    position: relative;
-    padding-bottom: 50px; /* Adjust as needed to leave space for the input form */
 }
 
 .input-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-radius: 5px;
+    width: calc(100% - 40px);
+    margin-top: 5px;
+    z-index: 1; /* Ensure the input container is above the message container */
 }
 
+
 .input-text {
-    flex: 1;  /* Expands the input field to fill available space */
+    flex: 1;
     border: none;
     outline: none;
-    font-size: 16px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 20px;
     border-radius: 5px;
     min-height: 30px;
     box-sizing: border-box;
@@ -184,18 +71,15 @@ a:hover {
 }
 
 .submit-button {
-    margin-left: 10px;
-    padding: 10px 15px;
+    padding: 20px 20px;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #361c1c;
     color: #e0e0e0;
 }
-
-/* Optional: Adjust styling for hover and focus states */
 
 .submit-button:hover {
     background-color: #2980b9;
@@ -205,38 +89,51 @@ a:hover {
     outline: 2px solid #3498db;
 }
 
-
-
 .message-container {
-    margin-bottom: 60px; /* Adjust to leave space for the input form */
+    max-height: 75vh; /* Set maximum height to 75% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 20px; /* Add margin bottom for spacing */
+    position: relative; /* Added position for proper stacking */
+    scrollbar-width: thin; /* Adjust width of the scrollbar */
+    scrollbar-color: #888888 #361c1c; /* Adjust colors of the scrollbar thumb and track */
 }
 
-/* Optional: Adjust message container height for scrolling */
-.message-container {
-    max-height: calc(100vh - 120px); /* Adjust 120px to leave space for the input form and padding */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
+/* Define styles for the scrollbar thumb */
+.message-container::-webkit-scrollbar-thumb {
+    background-color: #d29258; /* Color of the scrollbar thumb */
+}
+
+/* Define styles for the scrollbar track */
+.message-container::-webkit-scrollbar-track {
+    background-color: #5c2e2e; /* Color of the scrollbar track */
 }
 
 
-.user-message {
-    background-color: #5c2e2e; /* Light blue */
+.message-wrapper {
+    max-height: 100%; /* Set maximum height to 100% */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add padding for space around messages */
+}
+
+
+
+.user-message,
+.bot-message {
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
     font-family: Arial, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-message {
+    background-color: #5c2e2e;
+    color: white;
 }
 
 .bot-message {
-    background-color: #343a42; /* Light gray */
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-    line-height: 1.5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #343a42;
+    color: white;
 }
-

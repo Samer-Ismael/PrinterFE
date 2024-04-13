@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayMessage(message, isUser) {
         const messageContainer = document.createElement("div");
         messageContainer.classList.add(isUser ? "user-message" : "bot-message");
-
         // Regular expression to match Markdown code blocks
         const codeBlockRegex = /```[\s\S]+?```/g;
         let lastIndex = 0;
@@ -74,16 +73,17 @@ document.addEventListener("DOMContentLoaded", function() {
             const codeBlock = document.createElement("code");
             codeBlock.innerText = match[0].replace(/^```|```$/g, ""); // Remove leading and trailing ```
             messageContainer.appendChild(codeBlock);
-
         }
 
         // Add remaining text after the last code block, if any
         addTextNode(message.substring(lastIndex));
 
         // Append the message container to the chat container
-        const chatContainer = document.querySelector(".container");
+        const chatContainer = document.querySelector(".message-wrapper");
         if (chatContainer) {
             chatContainer.appendChild(messageContainer);
+            // Scroll the new message into view
+            messageContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
         } else {
             console.error("Chat container not found.");
         }
