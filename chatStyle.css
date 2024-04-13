@@ -137,3 +137,21 @@ h1 {
     background-color: #343a42;
     color: white;
 }
+
+
+/* Media query for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+    .container {
+        /* Adjust container width or margins for smaller screens */
+    }
+
+    .message-container,
+    .input-container {
+        /* Adjust width or margins for message and input sections on small screens */
+    }
+
+    #user-input,
+    .submit-button {
+        /* Adjust font size or width of input field and submit button */
+    }
+}
