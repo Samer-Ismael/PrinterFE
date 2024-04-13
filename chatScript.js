@@ -25,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
         updateSummary();
 
         // If history length exceeds 3, remove the oldest message
+
+        /*
         if (history.length > 3) {
             history.shift();
         }
-
+         */
         // Display loading message
         displayMessage("Smokey: Please wait...", false); // Pass false for bot message
 
@@ -56,9 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Update the summary after receiving the bot's response
                     updateSummary();
                     // If history length exceeds 3, remove the oldest message
+                    /*
                     if (history.length > 3) {
                         history.shift();
                     }
+                     */
                 } else {
                     console.error("Error: Response does not contain 'generated_response'");
                     displayMessage("Bot: Sorry, an error occurred while processing your request.", false); // Pass false for bot message
