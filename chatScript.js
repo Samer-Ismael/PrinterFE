@@ -94,25 +94,34 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayMessage(message, isUser) {
         const messageContainer = document.createElement("div");
         messageContainer.classList.add(isUser ? "user-message" : "bot-message");
-        const codeBlockRegex = /```[\s\S]+?```/g;
+
+        const codeBlockRegex = /```([\s\S]+?)```/g;
         let lastIndex = 0;
         let match;
 
-        const addTextNode = (text) => {
-            if (text) {
-                messageContainer.appendChild(document.createTextNode(text));
-            }
-        };
-
         while ((match = codeBlockRegex.exec(message)) !== null) {
-            addTextNode(message.substring(lastIndex, match.index));
-            lastIndex = codeBlockRegex.lastIndex;
+            const textBeforeCode = message.substring(lastIndex, match.index);
+            if (textBeforeCode) {
+                messageContainer.appendChild(document.createTextNode(textBeforeCode));
+            }
+
             const codeBlock = document.createElement("code");
-            codeBlock.innerText = match[0].replace(/^```|```$/g, ""); // Remove leading and trailing ```
-            messageContainer.appendChild(codeBlock);
+            codeBlock.textContent = match[1].trim();
+            codeBlock.style.whiteSpace = "pre-wrap"; // Preserve line breaks
+            codeBlock.style.overflowX = "auto"; // Enable horizontal scrolling for long lines
+
+            const preElement = document.createElement("pre");
+            preElement.appendChild(codeBlock);
+
+            messageContainer.appendChild(preElement);
+
+            lastIndex = codeBlockRegex.lastIndex;
         }
 
-        addTextNode(message.substring(lastIndex));
+        const textAfterLastCode = message.substring(lastIndex);
+        if (textAfterLastCode) {
+            messageContainer.appendChild(document.createTextNode(textAfterLastCode));
+        }
 
         const chatContainer = document.querySelector(".message-wrapper");
         if (chatContainer) {

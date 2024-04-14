@@ -78,7 +78,7 @@ h1 {
     font-size: 20px;
     cursor: pointer;
     border-radius: 10px;
-    background-color: #e1a56c;
+    background-color: #5c2e2e;
     color: #fff;
     transition: background-color 0.3s ease;
 }
@@ -98,7 +98,7 @@ h1 {
     margin-bottom: 20px;
     position: relative;
     scrollbar-width: thin;
-    scrollbar-color: #888888 #e1a56c;
+    scrollbar-color: #876341 #0d0d0d;
 }
 
 .message-container::-webkit-scrollbar-thumb {
@@ -128,7 +128,7 @@ h1 {
 }
 
 .user-message {
-    background-color: #e1a56c;
+    background-color: #361c1c;
     color: #fff;
 }
 
