@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const chatForm = document.getElementById("chat-form");
     const userInput = document.getElementById("user-input");
 
-    chatForm.addEventListener("submit", function(event) {
+    chatForm.addEventListener("submit", function (event) {
         event.preventDefault();
         sendMessage();
     });
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         displayMessage(userMessage, true); // Pass true for user message
 
         // Add user message to history
-        history.push({ type: "user", message: message, timestamp: new Date() });
+        history.push({type: "user", message: message, timestamp: new Date()});
 
         // Update the summary
         updateSummary();
@@ -40,9 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             prompt: summary // Send the summary to the AI
         };
         fetch(url, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
+            method: "POST", body: JSON.stringify(data), headers: {
                 "Content-Type": "application/json"
             }
         })
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const botMessage = getCurrentTime() + " Smokey: " + data.generated_response;
                     displayMessage(botMessage, false); // Pass false for bot message
                     // Add bot message to history
-                    history.push({ type: "bot", message: data.generated_response, timestamp: new Date() });
+                    history.push({type: "bot", message: data.generated_response, timestamp: new Date()});
                     // Update the summary after receiving the bot's response
                     updateSummary();
                     // If history length exceeds 3, remove the oldest message
@@ -87,9 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const minutes = String(now.getMinutes()).padStart(2, '0');
         return `${hours}:${minutes}`;
     }
-
-
-
 
     function displayMessage(message, isUser) {
         const messageContainer = document.createElement("div");
@@ -126,11 +121,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const chatContainer = document.querySelector(".message-wrapper");
         if (chatContainer) {
             chatContainer.appendChild(messageContainer);
-            messageContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            messageContainer.scrollIntoView({behavior: 'smooth', block: 'end'});
         } else {
             console.error("Chat container not found.");
         }
     }
 });
-
-// https://smokeyai.samerchat.se/send-request

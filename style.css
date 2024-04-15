@@ -23,6 +23,7 @@ body {
         background-position: -2000px -2000px; /* End position of background image (adjust based on image size) */
     }
 }
+
 /* ---------------------- Container Styles ---------------------- */
 
 .container {
@@ -281,7 +282,6 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
     /* Styles for screens smaller than 768px */
-
     .container {
         flex-direction: column; /* Stack elements vertically on small screens */
     }
@@ -373,6 +373,7 @@ a:hover {
         display: inline-block; /* Display social icons inline on small screens */
         margin: 0 1rem; /* Add margin between social icons */
     }
+
     .buttons {
         display: flex; /* Make buttons flex side-by-side */
         flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
@@ -605,6 +606,7 @@ input[type="range"] {
     display: flex;
     justify-content: center;
 }
+
 .social-icons li {
     margin: 20px;
 }
